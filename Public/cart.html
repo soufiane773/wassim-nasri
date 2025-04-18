@@ -1,0 +1,457 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Cart - ShopEase</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: "#3b82f6", secondary: "#f59e0b" },
+          borderRadius: {
+            none: "0px",
+            sm: "4px",
+            DEFAULT: "8px",
+            md: "12px",
+            lg: "16px",
+            xl: "20px",
+            "2xl": "24px",
+            "3xl": "32px",
+            full: "9999px",
+            button: "8px",
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-100">
+  <header class="header sticky top-0 z-50 bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+        <a href="index.html" class="font-['Pacifico'] text-3xl text-primary">lava</a>
+      <div class="search-bar hidden md:flex items-center flex-1 max-w-xl mx-6">
+        <div class="relative w-full">
+          <input type="text" class="search-input w-full py-2 pl-10 pr-4 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Search for products..." />
+          <div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+            <i class="ri-search-line"></i>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center space-x-6">
+        <a href="wishlist.html" class="relative text-gray-700 hover:text-primary">
+          <i class="ri-heart-line ri-lg"></i>
+          <span id="wishlist-count" class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+        </a>
+        <a href="cart.html" class="relative text-gray-700 hover:text-primary">
+          <i class="ri-shopping-cart-line ri-lg"></i>
+          <span id="cart-count" class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+        </a>
+        <a href="orders.html" class="text-gray-700 hover:text-primary">
+          <i class="ri-file-list-line ri-lg"></i>
+        </a>
+        <a href="login.html" class="text-gray-700 hover:text-primary relative" id="user-profile-link">
+          <i class="ri-user-line ri-lg"></i>
+          <span id="user-name" class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center hidden"></span>
+        </a>
+      </div>
+    </div>
+  </header>
+  <main class="py-20 px-4">
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-xl shadow-md">
+      <h1 class="text-3xl font-bold mb-6">Your Shopping Cart</h1>
+      
+      <!-- Cart Items Container -->
+      <div id="cart-items-container">
+        <!-- Cart items will be dynamically inserted here -->
+      </div>
+      
+      <!-- Empty Cart Message -->
+      <div id="empty-cart-message" class="hidden">
+        <p class="text-gray-500 text-lg">Your cart is currently empty.</p>
+        <a class="text-primary font-medium hover:underline mt-4 inline-block" href="index.html">Continue Shopping</a>
+      </div>
+      
+      <!-- Cart Summary -->
+      <div id="cart-summary" class="hidden mt-8 border-t border-gray-200 pt-6">
+        <div class="flex justify-between items-center mb-4">
+          <span class="text-lg font-medium">Subtotal:</span>
+          <span id="cart-subtotal" class="text-xl font-bold text-primary">$0.00</span>
+        </div>
+        <div class="flex justify-between items-center mb-4">
+          <span class="text-lg font-medium">Shipping:</span>
+          <span class="text-lg">Free</span>
+        </div>
+        <div class="flex justify-between items-center mb-6 border-t border-gray-200 pt-4">
+          <span class="text-xl font-bold">Total:</span>
+          <span id="cart-total" class="text-2xl font-bold text-primary">$0.00</span>
+        </div>
+        <div class="flex space-x-4">
+          <a href="index.html" class="flex-1 text-center py-3 border border-gray-300 rounded-lg hover:bg-gray-50">Continue Shopping</a>
+          <button id="checkout-btn" class="flex-1 bg-primary text-white py-3 rounded-lg hover:bg-primary/90">Proceed to Checkout</button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer bg-gray-800 text-white py-6 mt-10">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm text-gray-400">© 2025 ShopEase. All rights reserved.</p>
+      <div class="flex space-x-4 mt-4 md:mt-0">
+        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary">
+          <i class="ri-facebook-fill"></i>
+        </a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary">
+          <i class="ri-twitter-x-fill"></i>
+        </a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary">
+          <i class="ri-instagram-fill"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check login status and update UI
+      function checkLoginStatus() {
+        console.log("Checking login status...");
+        
+        // Show loading state
+        const userProfileLink = document.getElementById('user-profile-link');
+        const userNameSpan = document.getElementById('user-name');
+        userNameSpan.classList.add('hidden');
+        
+        fetch('/api/auth/check-login', {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          console.log("Login check response status:", response.status);
+          console.log("Login check response headers:", Object.fromEntries(response.headers.entries()));
+          
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log("Login check data:", data);
+          
+          if (data.loggedIn && data.username) {
+            console.log("User is logged in:", data.username);
+            // User is logged in
+            userProfileLink.href = 'profile.html';
+            userNameSpan.textContent = data.username.charAt(0).toUpperCase();
+            userNameSpan.classList.remove('hidden');
+            
+            // Update the icon to show logged in state
+            const userIcon = userProfileLink.querySelector('.ri-user-line');
+            if (userIcon) {
+              userIcon.classList.remove('ri-user-line');
+              userIcon.classList.add('ri-user-fill');
+            }
+            
+            // Store login status
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('username', data.username);
+          } else {
+            console.log("User is not logged in");
+            // User is not logged in (guest)
+            userProfileLink.href = 'login.html';
+            userNameSpan.classList.add('hidden');
+            
+            // Update the icon to show logged out state
+            const userIcon = userProfileLink.querySelector('.ri-user-fill, .ri-user-line');
+            if (userIcon) {
+              userIcon.classList.remove('ri-user-fill');
+              userIcon.classList.add('ri-user-line');
+            }
+            
+            // Clear login status
+            localStorage.setItem('isLoggedIn', 'false');
+            localStorage.removeItem('username');
+          }
+        })
+        .catch(error => {
+          console.error('Error checking login status:', error);
+          // Default to guest mode on error
+          userProfileLink.href = 'login.html';
+          userNameSpan.classList.add('hidden');
+          
+          // Update the icon to show logged out state
+          const userIcon = userProfileLink.querySelector('.ri-user-fill, .ri-user-line');
+          if (userIcon) {
+            userIcon.classList.remove('ri-user-fill');
+            userIcon.classList.add('ri-user-line');
+          }
+          
+          localStorage.setItem('isLoggedIn', 'false');
+          localStorage.removeItem('username');
+        });
+      }
+
+      // Check login status when page loads
+      checkLoginStatus();
+
+      // Update cart and wishlist counts
+      updateCounts();
+      
+      // Load cart items
+      loadCartItems();
+      
+      // Update cart and wishlist counts
+      function updateCounts() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        
+        // Validate cart data structure
+        cart = cart.filter(item => item && typeof item === 'object' && item.name && item.price);
+        
+        // Calculate total quantity in cart
+        const cartQuantity = cart.reduce((total, item) => total + (parseInt(item.quantity) || 1), 0);
+        
+        document.getElementById('cart-count').textContent = cartQuantity;
+        document.getElementById('wishlist-count').textContent = wishlist.length;
+      }
+      
+      // Load cart items from localStorage
+      function loadCartItems() {
+        const cartItemsContainer = document.getElementById('cart-items-container');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const cartSummary = document.getElementById('cart-summary');
+        
+        // Clear existing items
+        cartItemsContainer.innerHTML = '';
+        
+        // Get cart from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Validate cart data structure
+        cart = cart.filter(item => item && typeof item === 'object' && item.name && item.price);
+        
+        if (cart.length === 0) {
+          // Show empty cart message
+          emptyCartMessage.classList.remove('hidden');
+          cartSummary.classList.add('hidden');
+        } else {
+          // Hide empty cart message
+          emptyCartMessage.classList.add('hidden');
+          cartSummary.classList.remove('hidden');
+          
+          // Calculate total
+          let subtotal = 0;
+          
+          // Add each item to the cart
+          cart.forEach((item, index) => {
+            // Create cart item element
+            const cartItem = document.createElement('div');
+            cartItem.className = 'flex items-center border-b border-gray-200 py-4';
+            cartItem.dataset.index = index;
+            
+            // Extract price value (remove $ symbol)
+            const priceValue = item.price ? parseFloat(item.price.replace('$', '')) : 0;
+            const itemTotal = priceValue * (item.quantity || 1);
+            subtotal += itemTotal;
+            
+            cartItem.innerHTML = `
+              <div class="w-24 h-24 flex-shrink-0">
+                <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover rounded-md">
+              </div>
+              <div class="ml-4 flex-grow">
+                <h3 class="font-medium">${item.name}</h3>
+                <p class="text-sm text-gray-500">${item.category}</p>
+                <div class="flex items-center mt-2">
+                  <div class="flex items-center border border-gray-200 rounded-lg">
+                    <button class="decrease-qty w-8 h-8 flex items-center justify-center text-gray-600 hover:text-primary">-</button>
+                    <span class="quantity w-8 text-center">${item.quantity}</span>
+                    <button class="increase-qty w-8 h-8 flex items-center justify-center text-gray-600 hover:text-primary">+</button>
+                  </div>
+                  <span class="ml-4 font-medium">${item.price}</span>
+                </div>
+              </div>
+              <div class="ml-4 text-right">
+                <p class="font-medium">$${itemTotal.toFixed(2)}</p>
+                <button class="remove-item text-red-500 text-sm hover:text-red-700 mt-2">Remove</button>
+              </div>
+            `;
+            
+            cartItemsContainer.appendChild(cartItem);
+          });
+          
+          // Update subtotal and total
+          document.getElementById('cart-subtotal').textContent = `$${subtotal.toFixed(2)}`;
+          document.getElementById('cart-total').textContent = `$${subtotal.toFixed(2)}`;
+          
+          // Add event listeners to quantity buttons
+          document.querySelectorAll('.decrease-qty').forEach(button => {
+            button.addEventListener('click', function() {
+              const index = parseInt(this.closest('[data-index]').dataset.index);
+              updateQuantity(index, -1);
+            });
+          });
+          
+          document.querySelectorAll('.increase-qty').forEach(button => {
+            button.addEventListener('click', function() {
+              const index = parseInt(this.closest('[data-index]').dataset.index);
+              updateQuantity(index, 1);
+            });
+          });
+          
+          // Add event listeners to remove buttons
+          document.querySelectorAll('.remove-item').forEach(button => {
+            button.addEventListener('click', function() {
+              const index = parseInt(this.closest('[data-index]').dataset.index);
+              removeItem(index);
+            });
+          });
+        }
+      }
+      
+      // Update item quantity
+      function updateQuantity(index, change) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Validate cart data structure
+        cart = cart.filter(item => item && typeof item === 'object' && item.name && item.price);
+        
+        if (cart[index]) {
+          // Ensure quantity is a number
+          cart[index].quantity = (parseInt(cart[index].quantity) || 1) + change;
+          
+          if (cart[index].quantity <= 0) {
+            cart.splice(index, 1);
+            showToast('Item removed from cart');
+          } else {
+            showToast(`Quantity updated to ${cart[index].quantity}`);
+          }
+          
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCounts();
+          loadCartItems();
+        }
+      }
+      
+      // Remove item from cart
+      function removeItem(index) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Validate cart data structure
+        cart = cart.filter(item => item && typeof item === 'object' && item.name && item.price);
+        
+        if (cart[index]) {
+          cart.splice(index, 1);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCounts();
+          loadCartItems();
+          showToast('Item removed from cart');
+        }
+      }
+      
+      // Show toast message
+      function showToast(message) {
+        const toast = document.createElement('div');
+        toast.className = 'fixed bottom-4 right-4 bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 translate-y-0 opacity-100 z-50';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        
+        // Animate out after 3 seconds
+        setTimeout(() => {
+          toast.classList.add('translate-y-2', 'opacity-0');
+          setTimeout(() => toast.remove(), 300);
+        }, 3000);
+      }
+      
+      // Checkout button handler
+      const checkoutBtn = document.getElementById('checkout-btn');
+      if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', async function() {
+          // Get cart items from localStorage
+          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+          
+          // Validate cart data structure
+          cart = cart.filter(item => item && typeof item === 'object' && item.name && item.price);
+          
+          if (cart.length === 0) {
+            showToast('Your cart is empty');
+            return;
+          }
+
+          try {
+            // Check login status with server
+            const loginCheck = await fetch('/api/auth/check-login', {
+              method: 'GET',
+              credentials: 'include'
+            });
+            const loginData = await loginCheck.json();
+            
+            if (!loginData.loggedIn) {
+              // User is not logged in, save cart and redirect
+              localStorage.setItem('pendingCart', JSON.stringify(cart));
+              window.location.href = 'login.html?returnTo=cart.html';
+              return;
+            }
+            
+            // User is logged in, proceed with order
+            console.log('Starting order placement');
+            console.log('Cart data:', cart);
+            
+            const orderResponse = await fetch('/api/order/save', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ cart }),
+              credentials: 'include'
+            });
+            
+            console.log('Order response status:', orderResponse.status);
+            
+            if (!orderResponse.ok) {
+              if (orderResponse.status === 403) {
+                console.log('Session expired, redirecting to login');
+                // Session expired
+                localStorage.setItem('pendingCart', JSON.stringify(cart));
+                window.location.href = 'login.html?returnTo=cart.html';
+                return;
+              }
+              
+              const errorData = await orderResponse.json();
+              console.error('Order placement failed:', errorData);
+              throw new Error(errorData.error || 'Failed to place order');
+            }
+            
+            const orderData = await orderResponse.json();
+            console.log('Order placed successfully:', orderData);
+            
+            // Clear cart after successful order
+            localStorage.setItem('cart', JSON.stringify([]));
+            localStorage.removeItem('pendingCart');
+            updateCounts();
+            loadCartItems();
+            
+            // Show success message
+            showToast('Order placed successfully!');
+            
+            // Redirect to home page
+            setTimeout(() => {
+              window.location.href = 'index.html';
+            }, 2000);
+            
+          } catch (error) {
+            console.error('Error during checkout:', error);
+            showToast(error.message || 'Failed to place order. Please try again.');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

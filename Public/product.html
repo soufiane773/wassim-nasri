@@ -1,0 +1,283 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product - ShopEase</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: "#3b82f6", secondary: "#f59e0b" },
+          borderRadius: {
+            none: "0px",
+            sm: "4px",
+            DEFAULT: "8px",
+            md: "12px",
+            lg: "16px",
+            xl: "20px",
+            "2xl": "24px",
+            "3xl": "32px",
+            full: "9999px",
+            button: "8px",
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-100">
+  <header class="header sticky top-0 z-50 bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="font-['Pacifico'] text-3xl text-primary">lava</a>
+      <div class="search-bar hidden md:flex items-center flex-1 max-w-xl mx-6">
+        <div class="relative w-full">
+          <input type="text" class="search-input w-full py-2 pl-10 pr-4 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Search for products..." />
+          <div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+            <i class="ri-search-line"></i>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center space-x-6">
+        <a href="wishlist.html" class="relative text-gray-700 hover:text-primary">
+          <i class="ri-heart-line ri-lg"></i>
+          <span id="wishlist-count" class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+        </a>
+        <a href="cart.html" class="relative text-gray-700 hover:text-primary">
+          <i class="ri-shopping-cart-line ri-lg"></i>
+          <span id="cart-count" class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+        </a>
+        <a href="login.html" class="text-gray-700 hover:text-primary">
+          <i class="ri-user-line ri-lg"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+  <main class="py-20 px-4">
+    <div class="max-w-6xl mx-auto bg-white p-8 rounded-xl shadow-md grid md:grid-cols-2 gap-6">
+      <div class="relative">
+        <img id="product-image" alt="Product Image" class="w-full h-auto object-cover rounded-lg" src="https://via.placeholder.com/400">
+        <div class="absolute top-4 right-4">
+          <button id="wishlist-btn" class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm hover:text-primary transition-colors">
+            <i class="ri-heart-line"></i>
+          </button>
+        </div>
+      </div>
+      <div>
+        <div class="flex items-center mb-2">
+          <div id="product-rating" class="rating flex text-secondary"></div>
+          <span id="product-reviews" class="text-xs text-gray-500 ml-2"></span>
+        </div>
+        <h1 id="product-name" class="text-3xl font-bold mb-4">Product Name</h1>
+        <p id="product-category" class="text-sm text-gray-500 mb-3">Category</p>
+        <p class="text-lg text-gray-700 mb-6">This premium product offers exceptional quality and style. Perfect for everyday use or special occasions. Features include high-quality materials, comfortable fit, and elegant design.</p>
+        <p id="product-price" class="text-2xl font-semibold text-primary mb-4">$59.99</p>
+        <div class="flex space-x-4 mb-6">
+          <div class="flex items-center border border-gray-200 rounded-lg">
+            <button id="decrease-qty" class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-primary">-</button>
+            <span id="quantity" class="w-10 text-center">1</span>
+            <button id="increase-qty" class="w-10 h-10 flex items-center justify-center text-gray-600 hover:text-primary">+</button>
+          </div>
+          <button id="add-to-cart-btn" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary/90 flex items-center">
+            <i class="ri-shopping-cart-line mr-2"></i> Add to Cart
+          </button>
+        </div>
+        <div class="border-t border-gray-200 pt-4">
+          <h3 class="font-medium mb-2">Product Details</h3>
+          <ul class="text-gray-700 space-y-2">
+            <li class="flex">
+              <span class="w-24 text-gray-500">Material:</span>
+              <span>Premium Quality</span>
+            </li>
+            <li class="flex">
+              <span class="w-24 text-gray-500">Care:</span>
+              <span>Machine Washable</span>
+            </li>
+            <li class="flex">
+              <span class="w-24 text-gray-500">Shipping:</span>
+              <span>Free on orders over $50</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer bg-gray-800 text-white py-6 mt-10">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm text-gray-400">© 2025 ShopEase. All rights reserved.</p>
+      <div class="flex space-x-4 mt-4 md:mt-0">
+        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary">
+          <i class="ri-facebook-fill"></i>
+        </a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary">
+          <i class="ri-twitter-x-fill"></i>
+        </a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary">
+          <i class="ri-instagram-fill"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      
+      // Product data object to store all product information
+      let productData = {
+        id: Date.now(), // Generate a unique ID
+        name: '',
+        price: '',
+        image: '',
+        category: '',
+        rating: '',
+        reviews: '',
+        quantity: 1
+      };
+      
+      // Update product information
+      if (urlParams.has('name')) {
+        productData.name = urlParams.get('name');
+        document.getElementById('product-name').textContent = productData.name;
+        document.title = `${productData.name} - ShopEase`;
+      }
+      
+      if (urlParams.has('price')) {
+        productData.price = urlParams.get('price');
+        document.getElementById('product-price').textContent = productData.price;
+      }
+      
+      if (urlParams.has('image')) {
+        productData.image = urlParams.get('image');
+        document.getElementById('product-image').src = productData.image;
+      }
+      
+      if (urlParams.has('category')) {
+        productData.category = urlParams.get('category');
+        document.getElementById('product-category').textContent = productData.category;
+      }
+      
+      if (urlParams.has('rating')) {
+        productData.rating = urlParams.get('rating');
+        document.getElementById('product-rating').innerHTML = productData.rating;
+      }
+      
+      if (urlParams.has('reviews')) {
+        productData.reviews = urlParams.get('reviews');
+        document.getElementById('product-reviews').textContent = productData.reviews;
+      }
+      
+      // Update cart and wishlist counts
+      updateCounts();
+      
+      // Quantity controls
+      document.getElementById('decrease-qty').addEventListener('click', function() {
+        let qty = parseInt(document.getElementById('quantity').textContent);
+        if (qty > 1) {
+          document.getElementById('quantity').textContent = qty - 1;
+          productData.quantity = qty - 1;
+        }
+      });
+      
+      document.getElementById('increase-qty').addEventListener('click', function() {
+        let qty = parseInt(document.getElementById('quantity').textContent);
+        document.getElementById('quantity').textContent = qty + 1;
+        productData.quantity = qty + 1;
+      });
+      
+      // Add to cart functionality
+      document.getElementById('add-to-cart-btn').addEventListener('click', function() {
+        // Add to cart animation
+        this.classList.add('animate-pulse');
+        setTimeout(() => {
+          this.classList.remove('animate-pulse');
+        }, 500);
+        
+        // Get existing cart or initialize empty array
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Check if product already in cart
+        const existingProductIndex = cart.findIndex(item => item.id === productData.id);
+        
+        if (existingProductIndex !== -1) {
+          // Update quantity if product already in cart
+          cart[existingProductIndex].quantity += productData.quantity;
+        } else {
+          // Add new product to cart
+          cart.push(productData);
+        }
+        
+        // Save updated cart
+        localStorage.setItem('cart', JSON.stringify(cart));
+        
+        // Update cart count
+        updateCounts();
+        
+        // Show success message
+        alert('Product added to cart!');
+      });
+      
+      // Wishlist functionality
+      document.getElementById('wishlist-btn').addEventListener('click', function() {
+        // Get existing wishlist or initialize empty array
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        
+        // Check if product already in wishlist
+        const existingProductIndex = wishlist.findIndex(item => item.id === productData.id);
+        
+        if (existingProductIndex !== -1) {
+          // Remove from wishlist if already there
+          wishlist.splice(existingProductIndex, 1);
+          this.innerHTML = '<i class="ri-heart-line"></i>';
+        } else {
+          // Add to wishlist
+          wishlist.push(productData);
+          this.innerHTML = '<i class="ri-heart-fill"></i>';
+          this.classList.add('text-primary');
+        }
+        
+        // Save updated wishlist
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        
+        // Update wishlist count
+        updateCounts();
+      });
+      
+      // Check if product is in wishlist
+      function checkWishlistStatus() {
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        const isInWishlist = wishlist.some(item => item.id === productData.id);
+        
+        if (isInWishlist) {
+          document.getElementById('wishlist-btn').innerHTML = '<i class="ri-heart-fill"></i>';
+          document.getElementById('wishlist-btn').classList.add('text-primary');
+        }
+      }
+      
+      // Update cart and wishlist counts
+      function updateCounts() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        
+        document.getElementById('cart-count').textContent = cart.length;
+        document.getElementById('wishlist-count').textContent = wishlist.length;
+      }
+      
+      // Check wishlist status on page load
+      checkWishlistStatus();
+    });
+  </script>
+</body>
+</html>

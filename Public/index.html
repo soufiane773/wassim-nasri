@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopEase - Premium Online Shopping</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#3b82f6", secondary: "#f59e0b" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      /* Reset styles */
+      * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      }
+      body {
+      font-family: 'Inter', sans-serif;
+      color: #333;
+      background-color: #f9fafb;
+      }
+      /* Header styles */
+      .header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+      /* Search bar */
+      .search-bar {
+      position: relative;
+      }
+      .search-input {
+      background-color: #f3f4f6;
+      transition: all 0.3s ease;
+      }
+      .search-input:focus {
+      background-color: white;
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+      }
+      /* Navigation */
+      .nav-link {
+      position: relative;
+      }
+      .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 50%;
+      background-color: #3b82f6;
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+      }
+      .nav-link:hover:after {
+      width: 100%;
+      }
+      /* Hero section */
+      .hero-section {
+      background-size: cover;
+      background-position: center;
+      }
+      /* Category cards */
+      .category-card {
+      transition: all 0.3s ease;
+      }
+      .category-card:hover {
+      transform: translateY(-5px);
+      }
+      /* Product cards */
+      .product-card {
+      transition: all 0.3s ease;
+      }
+      .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      }
+      /* Carousel styles */
+      .product-carousel {
+        scroll-behavior: smooth;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+        display: flex;
+        gap: 1rem;
+        padding: 1rem 0;
+      }
+      .product-carousel::-webkit-scrollbar {
+        display: none;  /* Chrome, Safari and Opera */
+      }
+      
+      /* Carousel navigation buttons */
+      #new-arrivals-prev, #featured-products-prev, 
+      #new-arrivals-next, #featured-products-next {
+        opacity: 1;
+        transition: opacity 0.3s ease;
+        display: block;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .overflow-hidden {
+        position: relative;
+        padding: 0 1rem;
+      }
+      
+      /* Rating stars */
+      .rating {
+      color: #f59e0b;
+      }
+      /* Add to cart button */
+      .add-to-cart {
+      transition: all 0.3s ease;
+      }
+      /* Custom checkbox for newsletter */
+      .custom-checkbox {
+      position: relative;
+      padding-left: 30px;
+      cursor: pointer;
+      user-select: none;
+      }
+      .custom-checkbox input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+      }
+      .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      }
+      .custom-checkbox:hover input ~ .checkmark {
+      border-color: #3b82f6;
+      }
+      .custom-checkbox input:checked ~ .checkmark {
+      background-color: #3b82f6;
+      border-color: #3b82f6;
+      }
+      .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+      }
+      .custom-checkbox input:checked ~ .checkmark:after {
+      display: block;
+      }
+      .custom-checkbox .checkmark:after {
+      left: 7px;
+      top: 3px;
+      width: 6px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      }
+      /* Pagination */
+      .pagination-btn {
+      transition: all 0.3s ease;
+      }
+      /* Footer */
+      .footer {
+      background-color: #1f2937;
+      }
+      /* Newsletter input */
+      .newsletter-input {
+      transition: all 0.3s ease;
+      }
+      .newsletter-input:focus {
+      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+      }
+      /* Responsive adjustments */
+      @media (max-width: 1024px) {
+      .product-grid {
+      grid-template-columns: repeat(3, 1fr);
+      }
+      }
+      @media (max-width: 768px) {
+      .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+      }
+      .category-grid {
+      grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+      }
+      }
+      @media (max-width: 640px) {
+      .product-grid {
+      grid-template-columns: 1fr;
+      }
+      .hero-content {
+      text-align: center;
+      }
+      .footer-grid {
+      grid-template-columns: 1fr;
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header sticky top-0 z-50 bg-white shadow-sm">
+      <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+        
+        <!-- Logo -->
+        <a href="index.html" class="logo font-['Pacifico'] text-3xl text-primary">lava</a>
+  
+        <!-- Search Bar -->
+        <div class="search-bar hidden md:flex items-center flex-1 max-w-xl mx-6">
+          <div class="relative w-full">
+            <input
+              type="text"
+              class="search-input w-full py-2 pl-10 pr-4 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary"
+              placeholder="Search for products..."
+              aria-label="Search for products"
+            />
+            <div
+              class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400"
+            >
+              <i class="ri-search-line" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Right Navigation Icons -->
+        <div class="flex items-center space-x-6">
+          <!-- Wishlist -->
+          <a href="wishlist.html" class="relative text-gray-700 hover:text-primary" aria-label="Go to Wishlist">
+            <div class="w-6 h-6 flex items-center justify-center">
+              <i class="ri-heart-line ri-lg" aria-hidden="true"></i>
+            </div>
+            <span
+              class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center"
+            >3</span>
+          </a>
+  
+          <!-- Cart -->
+          <a href="cart.html" class="relative text-gray-700 hover:text-primary" aria-label="Go to Cart">
+            <div class="w-6 h-6 flex items-center justify-center">
+              <i class="ri-shopping-cart-line ri-lg" aria-hidden="true"></i>
+            </div>
+            <span
+              class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center"
+            >2</span>
+          </a>
+  
+          <!-- User Profile/Login -->
+          <a href="login.html" class="text-gray-700 hover:text-primary relative" aria-label="User Login" id="user-profile-link">
+            <div class="w-6 h-6 flex items-center justify-center">
+              <i class="ri-user-line ri-lg"></i>
+            </div>
+            <span id="user-name" class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center hidden"></span>
+          </a>
+          
+          <!-- Admin Link -->
+          <a href="admin.html" class="text-gray-700 hover:text-primary" aria-label="Admin Panel">
+            <div class="w-6 h-6 flex items-center justify-center">
+              <i class="ri-settings-3-line ri-lg"></i>
+            </div>
+          </a>
+        </div>
+    </div>  
+      <!-- Category navigation -->
+      <nav class="bg-white border-t border-gray-100">
+        <div class="container mx-auto px-4">
+          <ul
+            class="flex items-center space-x-8 overflow-x-auto py-3 whitespace-nowrap"
+          >
+            <li>
+              <a href="index.html" class="nav-link font-medium text-primary">Home</a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="nav-link font-medium text-gray-600 hover:text-primary"
+                >New Arrivals</a
+              >
+            </li>
+            <li>
+              <a
+                href="woman.html"
+                class="nav-link font-medium text-gray-600 hover:text-primary"
+                >Women</a
+              >
+            </li>
+            <li>
+              <a
+                href="men.html"
+                class="nav-link font-medium text-gray-600 hover:text-primary"
+                >Men</a
+              >
+            </li>
+            <li>
+              <a
+                href="accesiore.html"
+                class="nav-link font-medium text-gray-600 hover:text-primary"
+                >Accessories</a
+              >
+            </li>
+            <li>
+              <a
+                href="beauty.html"
+                class="nav-link font-medium text-gray-600 hover:text-primary"
+                >Beauty</a
+              >
+            </li>
+            <li>
+              <a
+                href="electronics.html"
+                class="nav-link font-medium text-gray-600 hover:text-primary"
+                >Electronics</a
+              >
+            </li>
+            <li>
+              <a
+                href="home&living.html"
+                class="nav-link font-medium text-gray-600 hover:text-primary"
+                >Home & Living</a
+              >
+            </li>
+            <li>
+              <a
+                href="sale.html"
+                class="nav-link font-medium text-gray-600 hover:text-primary"
+                >Sale</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <!-- Hero Banner Section -->
+      <section
+        class="hero-section relative"
+        style="background-image: url('https://readdy.ai/api/search-image?query=modern%2520e-commerce%2520shopping%2520scene%2520with%2520elegant%2520gradient%2520background%2520in%2520soft%2520blue%2520tones%252C%2520featuring%2520minimalist%2520product%2520displays%2520with%2520subtle%2520shadows%252C%2520high-end%2520fashion%2520items%2520arranged%2520artistically%252C%2520clean%2520composition%2520with%2520plenty%2520of%2520negative%2520space&width=1600&height=600&seq=1&orientation=landscape');"
+      >
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent"
+        ></div>
+        <div class="container mx-auto px-4 py-20 md:py-32 relative">
+          <div class="hero-content max-w-xl">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Spring Collection 2025
+            </h1>
+            <p class="text-lg text-gray-700 mb-8">
+              Discover our latest arrivals with up to 40% off on selected items.
+              Limited time offer.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="#"
+                class="bg-primary text-white px-8 py-3 rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap"
+                >Shop Now</a
+              >
+              <a
+                href="#"
+                class="bg-white text-gray-800 px-8 py-3 rounded-button font-medium border border-gray-200 hover:bg-gray-50 transition-colors whitespace-nowrap"
+                >Explore Collection</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Featured Categories Section -->
+      <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+          <h2 class="text-3xl font-bold text-center mb-12">Shop by Category</h2>
+          <div class="category-grid grid grid-cols-2 md:grid-cols-3 gap-6">
+            <!-- Category 1 -->
+            <div
+              class="category-card bg-white rounded-lg shadow-sm overflow-hidden"
+            >
+              <div class="h-40 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=elegant%2520women%2527s%2520fashion%2520items%2520neatly%2520arranged%2520on%2520minimal%2520light%2520background%252C%2520featuring%2520dresses%252C%2520blouses%252C%2520and%2520accessories%2520in%2520pastel%2520colors%252C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows&width=300&height=300&seq=2&orientation=squarish"
+                  alt="Women's Fashion"
+                  class="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="font-medium">Women's Fashion</h3>
+              </div>
+            </div>
+            <!-- Category 2 -->
+            <div
+              class="category-card bg-white rounded-lg shadow-sm overflow-hidden"
+            >
+              <div class="h-40 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=men%2527s%2520fashion%2520items%2520including%2520shirts%252C%2520pants%252C%2520and%2520accessories%2520arranged%2520on%2520clean%2520light%2520background%252C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows%252C%2520minimalist%2520style&width=300&height=300&seq=3&orientation=squarish"
+                  alt="Men's Fashion"
+                  class="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="font-medium">Men's Fashion</h3>
+              </div>
+            </div>
+            <!-- Category 3 -->
+            <div
+              class="category-card bg-white rounded-lg shadow-sm overflow-hidden"
+            >
+              <div class="h-40 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=jewelry%2520and%2520accessories%2520including%2520necklaces%252C%2520earrings%252C%2520and%2520bracelets%2520arranged%2520on%2520light%2520background%252C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows%252C%2520elegant%2520composition&width=300&height=300&seq=4&orientation=squarish"
+                  alt="Accessories"
+                  class="w-full h-full object-cover object-top"
+                />
+              </div>
+              <div class="p-4 text-center">
+                <h3 class="font-medium">Accessories</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- New Arrivals Section -->
+      <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <div class="flex justify-between items-center mb-12">
+            <h2 class="text-3xl font-bold">New Arrivals</h2>
+            <a
+              href="#"
+              class="text-primary font-medium flex items-center hover:underline"
+            >
+              View All
+              <div class="w-5 h-5 flex items-center justify-center ml-1">
+                <i class="ri-arrow-right-line"></i>
+              </div>
+            </a>
+          </div>
+          <div class="relative">
+            <button id="new-arrivals-prev" class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full z-10 hover:bg-black/70 transition-colors">
+              <i class="ri-arrow-left-s-line text-xl"></i>
+            </button>
+            <button id="new-arrivals-next" class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full z-10 hover:bg-black/70 transition-colors">
+              <i class="ri-arrow-right-s-line text-xl"></i>
+            </button>
+            <div class="overflow-hidden px-10">
+              <div
+                id="new-arrivals-grid"
+                class="product-carousel flex transition-transform duration-300 ease-in-out"
+              >
+                <!-- Products will be dynamically inserted here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Featured Products Section -->
+      <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+          <div class="flex justify-between items-center mb-12">
+            <h2 class="text-3xl font-bold">Featured Products</h2>
+            <a
+              href="#"
+              class="text-primary font-medium flex items-center hover:underline"
+            >
+              View All
+              <div class="w-5 h-5 flex items-center justify-center ml-1">
+                <i class="ri-arrow-right-line"></i>
+              </div>
+            </a>
+          </div>
+          <div class="relative">
+            <button id="featured-products-prev" class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full z-10 hover:bg-black/70 transition-colors">
+              <i class="ri-arrow-left-s-line text-xl"></i>
+            </button>
+            <button id="featured-products-next" class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full z-10 hover:bg-black/70 transition-colors">
+              <i class="ri-arrow-right-s-line text-xl"></i>
+            </button>
+            <div class="overflow-hidden px-10">
+              <div
+                id="featured-products-grid"
+                class="product-carousel flex transition-transform duration-300 ease-in-out"
+              >
+                <!-- Products will be dynamically inserted here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="bg-gray-100 py-8">
+        <div class="container mx-auto px-4">
+          <h2 class="text-xl font-semibold mb-2">Subscribe to our Newsletter</h2>
+          <form class="flex flex-col sm:flex-row gap-2">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              class="newsletter-input px-4 py-2 rounded border border-gray-300 w-full sm:w-auto"
+            />
+            <button
+              type="submit"
+              class="bg-primary text-white px-6 py-2 rounded hover:bg-primary/90"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer class="footer text-white">
+      <div class="container mx-auto px-4 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <div class="mb-4 md:mb-0">
+            <a
+              href="#"
+              class="font-['Pacifico'] text-2xl text-white mb-2 inline-block"
+              >logo</a
+            >
+            <p class="text-gray-400 text-sm">
+              © 2025 ShopEase. All rights reserved.
+            </p>
+          </div>
+          <div class="flex space-x-4">
+            <a
+              href="#"
+              class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-primary transition-colors"
+            >
+              <i class="ri-facebook-fill"></i>
+            </a>
+            <a
+              href="#"
+              class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-primary transition-colors"
+            >
+              <i class="ri-twitter-x-fill"></i>
+            </a>
+            <a
+              href="#"
+              class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-primary transition-colors"
+            >
+              <i class="ri-instagram-fill"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Check login status and update UI
+        function checkLoginStatus() {
+          console.log("Checking login status...");
+          
+          // Show loading state
+          const userProfileLink = document.getElementById('user-profile-link');
+          const userNameSpan = document.getElementById('user-name');
+          userNameSpan.classList.add('hidden');
+          
+          fetch('/api/auth/check-login', {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+              'Accept': 'application/json'
+            }
+          })
+          .then(response => {
+            console.log("Login check response status:", response.status);
+            console.log("Login check response headers:", Object.fromEntries(response.headers.entries()));
+            
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then(data => {
+            console.log("Login check data:", data);
+            
+            if (data.loggedIn && data.username) {
+              console.log("User is logged in:", data.username);
+              // User is logged in
+              userProfileLink.href = 'profile.html';
+              userNameSpan.textContent = data.username.charAt(0).toUpperCase();
+              userNameSpan.classList.remove('hidden');
+              
+              // Update the icon to show logged in state
+              const userIcon = userProfileLink.querySelector('.ri-user-line');
+              if (userIcon) {
+                userIcon.classList.remove('ri-user-line');
+                userIcon.classList.add('ri-user-fill');
+              }
+              
+              // Store login status
+              localStorage.setItem('isLoggedIn', 'true');
+              localStorage.setItem('username', data.username);
+            } else {
+              console.log("User is not logged in");
+              // User is not logged in (guest)
+              userProfileLink.href = 'login.html';
+              userNameSpan.classList.add('hidden');
+              
+              // Update the icon to show logged out state
+              const userIcon = userProfileLink.querySelector('.ri-user-fill, .ri-user-line');
+              if (userIcon) {
+                userIcon.classList.remove('ri-user-fill');
+                userIcon.classList.add('ri-user-line');
+              }
+              
+              // Clear login status
+              localStorage.setItem('isLoggedIn', 'false');
+              localStorage.removeItem('username');
+            }
+          })
+          .catch(error => {
+            console.error('Error checking login status:', error);
+            // Default to guest mode on error
+            userProfileLink.href = 'login.html';
+            userNameSpan.classList.add('hidden');
+            
+            // Update the icon to show logged out state
+            const userIcon = userProfileLink.querySelector('.ri-user-fill, .ri-user-line');
+            if (userIcon) {
+              userIcon.classList.remove('ri-user-fill');
+              userIcon.classList.add('ri-user-line');
+            }
+            
+            localStorage.setItem('isLoggedIn', 'false');
+            localStorage.removeItem('username');
+          });
+        }
+
+        // Check login status when page loads
+        checkLoginStatus();
+
+        // Function to show toast messages
+        function showToast(message) {
+          const toast = document.createElement('div');
+          toast.className = 'fixed bottom-4 right-4 bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 translate-y-0 opacity-100 z-50';
+          toast.textContent = message;
+          document.body.appendChild(toast);
+          
+          // Animate out after 3 seconds
+          setTimeout(() => {
+            toast.classList.add('translate-y-2', 'opacity-0');
+            setTimeout(() => toast.remove(), 300);
+          }, 3000);
+        }
+
+        // Update counts on page load
+        function updateCounts() {
+          let cart = JSON.parse(localStorage.getItem('cart')) || [];
+          let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+          
+          // Update cart count to show total quantity
+          const cartCount = cart.reduce((total, item) => total + (item.quantity || 1), 0);
+          document.querySelector('.ri-shopping-cart-line').closest('a').querySelector('span').textContent = cartCount;
+          
+          // Update wishlist count
+          document.querySelector('.ri-heart-line').closest('a').querySelector('span').textContent = wishlist.length;
+        }
+
+        // Function to generate a stable product ID
+        function generateProductId(productData) {
+          return btoa(productData.name + productData.price).replace(/[^a-zA-Z0-9]/g, '');
+        }
+
+        // Function to update heart icon state
+        function updateHeartIcon(button, isInWishlist) {
+          if (isInWishlist) {
+            button.classList.remove('ri-heart-line');
+            button.classList.add('ri-heart-fill', 'text-primary');
+          } else {
+            button.classList.remove('ri-heart-fill', 'text-primary');
+            button.classList.add('ri-heart-line');
+          }
+        }
+
+        // Function to safely get text content from an element
+        function safeGetText(parent, selector) {
+          const element = parent.querySelector(selector);
+          return element ? element.textContent : '';
+        }
+
+        // Function to safely get HTML content from an element
+        function safeGetHTML(parent, selector) {
+          const element = parent.querySelector(selector);
+          return element ? element.innerHTML : '';
+        }
+
+        // Function to safely get image source
+        function safeGetImageSrc(parent) {
+          const img = parent.querySelector('img');
+          return img ? img.src : '';
+        }
+
+        // Function to get product data from a product card
+        function getProductDataFromCard(productCard) {
+          if (!productCard) return null;
+          
+          const productData = {
+            name: safeGetText(productCard, 'h3'),
+            price: safeGetText(productCard, '.font-bold.text-lg'),
+            image: safeGetImageSrc(productCard),
+            category: safeGetText(productCard, '.text-sm.text-gray-500.mb-3'),
+            rating: safeGetHTML(productCard, '.rating'),
+            reviews: safeGetText(productCard, '.text-xs.text-gray-500.ml-2'),
+            quantity: 1
+          };
+
+          // Only return product data if we have at least a name and price
+          if (productData.name && productData.price) {
+            productData.id = generateProductId(productData);
+            return productData;
+          }
+          return null;
+        }
+
+        // Function to create a product card HTML
+        function createProductCard(product) {
+          console.log('Creating card for product:', product); // Debug log
+          return `
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow-sm flex-shrink-0 w-64">
+              <div class="relative">
+                <img 
+                  src="${product.image || ''}" 
+                  alt="${product.name || 'Product'}" 
+                  class="w-full h-64 object-cover object-top"
+                  onerror="this.onerror=null; this.src='https://via.placeholder.com/400x500?text=${encodeURIComponent(product.name || 'Product')}'"
+                />
+                <div class="absolute top-4 right-4">
+                  <button class="w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm hover:text-primary transition-colors">
+                    <i class="ri-heart-line"></i>
+                  </button>
+                </div>
+                <div class="absolute top-4 left-4">
+                  <span class="bg-primary text-white text-xs px-2 py-1 rounded">New</span>
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex items-center mb-2">
+                  <div class="rating flex text-secondary">
+                    ${Array(5).fill().map((_, i) => 
+                      i < Math.floor(product.rating || 0) ? '<i class="ri-star-fill"></i>' :
+                      i === Math.floor(product.rating || 0) && (product.rating % 1 !== 0) ? '<i class="ri-star-half-fill"></i>' :
+                      '<i class="ri-star-line"></i>'
+                    ).join('')}
+                  </div>
+                  <span class="text-xs text-gray-500 ml-2">(${product.reviews || 0})</span>
+                </div>
+                <h3 class="font-medium mb-1">${product.name || 'Unnamed Product'}</h3>
+                <p class="text-sm text-gray-500 mb-3">${product.category || 'Uncategorized'}</p>
+                <div class="flex justify-between items-center">
+                  <span class="font-bold text-lg">$${typeof product.price === 'number' ? product.price.toFixed(2) : '0.00'}</span>
+                  <button class="add-to-cart bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-primary/90">
+                    <i class="ri-shopping-cart-line"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+        }
+
+        // Function to fetch and display products
+        async function fetchAndDisplayProducts() {
+          try {
+            const response = await fetch('/api/products');
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const products = await response.json();
+            console.log('Fetched products:', products); // Debug log
+            
+            if (!Array.isArray(products) || products.length === 0) {
+              console.log('No products found or invalid data format');
+              return;
+            }
+
+            // Sort products by creation date to get newest first
+            const sortedProducts = [...products].sort((a, b) => 
+              new Date(b.created_at) - new Date(a.created_at)
+            );
+            
+            // Display newest products in New Arrivals section
+            const newArrivalsGrid = document.getElementById('new-arrivals-grid');
+            if (newArrivalsGrid) {
+              const newArrivalsHtml = sortedProducts
+                .map(product => createProductCard({
+                  ...product,
+                  price: parseFloat(product.price), // Ensure price is a number
+                  rating: parseFloat(product.rating), // Ensure rating is a number
+                  reviews: parseInt(product.reviews) // Ensure reviews is a number
+                }))
+                .join('');
+              newArrivalsGrid.innerHTML = newArrivalsHtml;
+              console.log('New Arrivals rendered:', newArrivalsGrid.children.length); // Debug log
+              
+              // Force a reflow to ensure the carousel is properly initialized
+              void newArrivalsGrid.offsetWidth;
+            }
+            
+            // Display featured products (using products with highest ratings)
+            const featuredProductsGrid = document.getElementById('featured-products-grid');
+            if (featuredProductsGrid) {
+              const featuredProducts = [...products]
+                .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating));
+              const featuredHtml = featuredProducts
+                .map(product => createProductCard({
+                  ...product,
+                  price: parseFloat(product.price),
+                  rating: parseFloat(product.rating),
+                  reviews: parseInt(product.reviews)
+                }))
+                .join('');
+              featuredProductsGrid.innerHTML = featuredHtml;
+              console.log('Featured Products rendered:', featuredProductsGrid.children.length); // Debug log
+              
+              // Force a reflow to ensure the carousel is properly initialized
+              void featuredProductsGrid.offsetWidth;
+            }
+            
+            // Initialize event listeners for the new product cards
+            initializeProductCards();
+            
+            // Initialize carousel navigation
+            initializeCarousels();
+          } catch (error) {
+            console.error('Error fetching products:', error);
+            // Show error message on the page
+            const grids = [
+              document.getElementById('new-arrivals-grid'),
+              document.getElementById('featured-products-grid')
+            ];
+            grids.forEach(grid => {
+              if (grid) {
+                grid.innerHTML = `
+                  <div class="col-span-full text-center text-gray-500">
+                    <p>Error loading products. Please try again later.</p>
+                  </div>
+                `;
+              }
+            });
+          }
+        }
+
+        // Function to initialize product card event listeners
+        function initializeProductCards() {
+          // Add wishlist functionality
+        document.querySelectorAll(".ri-heart-line").forEach((button) => {
+          button.addEventListener("click", function (e) {
+              e.stopPropagation();
+              const productCard = button.closest('.product-card');
+              const productData = getProductDataFromCard(productCard);
+              
+              if (!productData) return;
+              
+              let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+              const existingProductIndex = wishlist.findIndex(item => item.id === productData.id);
+              
+              if (existingProductIndex !== -1) {
+                wishlist.splice(existingProductIndex, 1);
+                button.classList.remove('ri-heart-fill', 'text-primary');
+                button.classList.add('ri-heart-line');
+              } else {
+                wishlist.push(productData);
+                button.classList.remove('ri-heart-line');
+                button.classList.add('ri-heart-fill', 'text-primary');
+              }
+              
+              localStorage.setItem('wishlist', JSON.stringify(wishlist));
+              updateCounts();
+          });
+        });
+
+          // Add cart functionality
+          document.querySelectorAll(".add-to-cart").forEach((button) => {
+            button.addEventListener("click", function (e) {
+              e.stopPropagation();
+              const productCard = button.closest('.product-card');
+              const productData = getProductDataFromCard(productCard);
+              
+              if (!productData) return;
+              
+              let cart = JSON.parse(localStorage.getItem('cart')) || [];
+              const existingProductIndex = cart.findIndex(item => item.id === productData.id);
+              
+              if (existingProductIndex !== -1) {
+                cart[existingProductIndex].quantity += 1;
+              } else {
+                cart.push(productData);
+              }
+              
+              localStorage.setItem('cart', JSON.stringify(cart));
+              updateCounts();
+          });
+        });
+
+          // Add product card click handler
+          document.querySelectorAll(".product-card").forEach(card => {
+            card.style.cursor = "pointer";
+            card.addEventListener("click", (e) => {
+              if (e.target.closest('.add-to-cart') || e.target.closest('.ri-heart-line')) return;
+              
+              const productData = getProductDataFromCard(card);
+              if (!productData) return;
+              
+              const params = new URLSearchParams({
+                name: productData.name,
+                price: productData.price,
+                image: productData.image,
+                category: productData.category,
+                rating: productData.rating,
+                reviews: productData.reviews
+              });
+              
+              window.location.href = `product.html?${params.toString()}`;
+            });
+          });
+        }
+
+        // Function to initialize carousel navigation
+        function initializeCarousels() {
+          // Debug function to log carousel state
+          function debugCarousel(name, grid, prev, next, currentPosition, cardWidth, visibleCards, totalCards) {
+            console.log(`Debug ${name} Carousel:`, {
+              gridWidth: grid.parentElement.offsetWidth,
+              cardWidth,
+              visibleCards,
+              totalCards,
+              currentPosition,
+              maxScroll: -(totalCards - visibleCards) * cardWidth,
+              transform: grid.style.transform
+            });
+          }
+          
+          // New Arrivals carousel
+          const newArrivalsGrid = document.getElementById('new-arrivals-grid');
+          const newArrivalsPrev = document.getElementById('new-arrivals-prev');
+          const newArrivalsNext = document.getElementById('new-arrivals-next');
+          
+          if (newArrivalsGrid && newArrivalsPrev && newArrivalsNext) {
+            let currentPosition = 0;
+            const cardWidth = 272; // 264px (w-64) + 8px (gap)
+            const visibleCards = Math.floor(newArrivalsGrid.parentElement.offsetWidth / cardWidth);
+            const totalCards = newArrivalsGrid.children.length;
+            
+            // Debug carousel state
+            debugCarousel('New Arrivals', newArrivalsGrid, newArrivalsPrev, newArrivalsNext, currentPosition, cardWidth, visibleCards, totalCards);
+            
+            // Hide navigation buttons if there are fewer cards than can fit in the viewport
+            if (totalCards <= visibleCards) {
+              newArrivalsPrev.style.display = 'none';
+              newArrivalsNext.style.display = 'none';
+            }
+            
+            newArrivalsPrev.addEventListener('click', () => {
+              currentPosition = Math.min(currentPosition + cardWidth, 0);
+              newArrivalsGrid.style.transform = `translateX(${currentPosition}px)`;
+              console.log('New Arrivals Prev clicked, new position:', currentPosition);
+            });
+            
+            newArrivalsNext.addEventListener('click', () => {
+              const maxScroll = -(totalCards - visibleCards) * cardWidth;
+              currentPosition = Math.max(currentPosition - cardWidth, maxScroll);
+              newArrivalsGrid.style.transform = `translateX(${currentPosition}px)`;
+              console.log('New Arrivals Next clicked, new position:', currentPosition);
+            });
+            
+            // Add touch/swipe support
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            newArrivalsGrid.addEventListener('touchstart', (e) => {
+              touchStartX = e.changedTouches[0].screenX;
+            }, false);
+            
+            newArrivalsGrid.addEventListener('touchend', (e) => {
+              touchEndX = e.changedTouches[0].screenX;
+              handleSwipe();
+            }, false);
+            
+            function handleSwipe() {
+              const swipeThreshold = 50;
+              const diff = touchStartX - touchEndX;
+              
+              if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                  // Swipe left
+                  const maxScroll = -(totalCards - visibleCards) * cardWidth;
+                  currentPosition = Math.max(currentPosition - cardWidth, maxScroll);
+                } else {
+                  // Swipe right
+                  currentPosition = Math.min(currentPosition + cardWidth, 0);
+                }
+                newArrivalsGrid.style.transform = `translateX(${currentPosition}px)`;
+                console.log('New Arrivals Swipe, new position:', currentPosition);
+              }
+            }
+          }
+          
+          // Featured Products carousel
+          const featuredProductsGrid = document.getElementById('featured-products-grid');
+          const featuredProductsPrev = document.getElementById('featured-products-prev');
+          const featuredProductsNext = document.getElementById('featured-products-next');
+          
+          if (featuredProductsGrid && featuredProductsPrev && featuredProductsNext) {
+            let currentPosition = 0;
+            const cardWidth = 272; // 264px (w-64) + 8px (gap)
+            const visibleCards = Math.floor(featuredProductsGrid.parentElement.offsetWidth / cardWidth);
+            const totalCards = featuredProductsGrid.children.length;
+            
+            // Debug carousel state
+            debugCarousel('Featured Products', featuredProductsGrid, featuredProductsPrev, featuredProductsNext, currentPosition, cardWidth, visibleCards, totalCards);
+            
+            // Hide navigation buttons if there are fewer cards than can fit in the viewport
+            if (totalCards <= visibleCards) {
+              featuredProductsPrev.style.display = 'none';
+              featuredProductsNext.style.display = 'none';
+            }
+            
+            featuredProductsPrev.addEventListener('click', () => {
+              currentPosition = Math.min(currentPosition + cardWidth, 0);
+              featuredProductsGrid.style.transform = `translateX(${currentPosition}px)`;
+              console.log('Featured Products Prev clicked, new position:', currentPosition);
+            });
+            
+            featuredProductsNext.addEventListener('click', () => {
+              const maxScroll = -(totalCards - visibleCards) * cardWidth;
+              currentPosition = Math.max(currentPosition - cardWidth, maxScroll);
+              featuredProductsGrid.style.transform = `translateX(${currentPosition}px)`;
+              console.log('Featured Products Next clicked, new position:', currentPosition);
+            });
+            
+            // Add touch/swipe support
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            featuredProductsGrid.addEventListener('touchstart', (e) => {
+              touchStartX = e.changedTouches[0].screenX;
+            }, false);
+            
+            featuredProductsGrid.addEventListener('touchend', (e) => {
+              touchEndX = e.changedTouches[0].screenX;
+              handleSwipe();
+            }, false);
+            
+            function handleSwipe() {
+              const swipeThreshold = 50;
+              const diff = touchStartX - touchEndX;
+              
+              if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                  // Swipe left
+                  const maxScroll = -(totalCards - visibleCards) * cardWidth;
+                  currentPosition = Math.max(currentPosition - cardWidth, maxScroll);
+                } else {
+                  // Swipe right
+                  currentPosition = Math.min(currentPosition + cardWidth, 0);
+                }
+                featuredProductsGrid.style.transform = `translateX(${currentPosition}px)`;
+                console.log('Featured Products Swipe, new position:', currentPosition);
+              }
+            }
+          }
+        }
+
+        // Fetch and display products when the page loads
+        fetchAndDisplayProducts();
+
+        // Listen for new products being added
+        window.addEventListener('productAdded', function(event) {
+          console.log('New product added:', event.detail);
+          
+          // Refresh the product display
+          fetchAndDisplayProducts();
+          
+          // Show a toast notification
+          showToast('New product added!');
+        });
+
+        // Periodically check for new products (every 30 seconds)
+        setInterval(function() {
+          fetchAndDisplayProducts();
+        }, 30000);
+
+        // Newsletter subscription
+        const newsletterForms = document.querySelectorAll('input[type="email"]');
+        newsletterForms.forEach((form) => {
+          form.addEventListener("focus", function () {
+            this.parentElement.classList.add("ring-2", "ring-primary/30");
+          });
+          form.addEventListener("blur", function () {
+            this.parentElement.classList.remove("ring-2", "ring-primary/30");
+          });
+        });
+        // Custom checkbox
+        const customCheckboxes = document.querySelectorAll(".custom-checkbox input");
+        customCheckboxes.forEach((checkbox) => {
+          checkbox.addEventListener("change", function () {
+            const checkmark = this.nextElementSibling;
+            if (this.checked) {
+              checkmark.classList.add("bg-primary", "border-primary");
+            } else {
+              checkmark.classList.remove("bg-primary", "border-primary");
+            }
+          });
+        });
+        // Mobile menu toggle (simplified)
+        const mobileMenuButton = document.createElement("button");
+        mobileMenuButton.className =
+          "md:hidden w-10 h-10 flex items-center justify-center text-gray-700";
+        mobileMenuButton.innerHTML = '<i class="ri-menu-line ri-lg"></i>';
+        const logo = document.querySelector(".logo");
+        logo.parentNode.insertBefore(mobileMenuButton, logo.nextSibling);
+        // Pagination
+        const paginationButtons = document.querySelectorAll(".pagination-btn");
+        paginationButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            paginationButtons.forEach((btn) => {
+              btn.classList.remove("bg-primary", "text-white");
+              if (!btn.classList.contains("border")) {
+                btn.classList.add("border", "border-gray-200", "text-gray-700");
+              }
+            });
+            this.classList.remove("border", "border-gray-200", "text-gray-700");
+            this.classList.add("bg-primary", "text-white");
+          });
+        });
+
+        document.querySelector(".search-input")?.addEventListener("keydown", e => {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            window.location.href = `search.html?q=${encodeURIComponent(e.target.value)}`;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fashion Store - Beauty</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#4169E1", secondary: "#F8F9FA" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      body {
+          font-family: 'Inter', sans-serif;
+      }
+      .search-input:focus {
+          outline: none;
+      }
+      .search-input::placeholder {
+          color: #9CA3AF;
+      }
+      .price-range::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background: #4169E1;
+          cursor: pointer;
+      }
+      .price-range::-moz-range-thumb {
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background: #4169E1;
+          cursor: pointer;
+      }
+      .color-swatch input:checked + span {
+          transform: scale(1.2);
+          border-color: #4169E1;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- Header -->
+    <header class="w-full bg-white shadow-sm">
+      <div
+        class="container mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <!-- Logo -->
+        <a
+          href="https://readdy.ai/home/a8437a69-63fe-4eb6-ac64-02df0ef18380/17a55a8f-50c6-4bc6-9fd7-966cfadee037"
+          data-readdy="true"
+          class="text-primary text-3xl font-['Pacifico']"
+          >logo</a
+        >
+        <!-- Search Bar -->
+        <div class="relative w-1/3 mx-4">
+          <input
+            type="text"
+            placeholder="Search for products..."
+            class="search-input w-full py-2 px-4 pr-10 border border-gray-200 rounded text-sm"
+          />
+          <div
+            class="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center text-gray-400"
+          >
+            <i class="ri-search-line"></i>
+          </div>
+        </div>
+        <!-- Icons -->
+        <div class="flex items-center space-x-6">
+          <a href="#" class="relative">
+            <div class="w-6 h-6 flex items-center justify-center">
+              <i class="ri-heart-line text-gray-700"></i>
+            </div>
+            <span
+              class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center"
+              >3</span
+            >
+          </a>
+          <a href="#" class="relative">
+            <div class="w-6 h-6 flex items-center justify-center">
+              <i class="ri-shopping-cart-line text-gray-700"></i>
+            </div>
+            <span
+              class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center"
+              >2</span
+            >
+          </a>
+          <a href="#">
+            <div class="w-6 h-6 flex items-center justify-center">
+              <i class="ri-user-line text-gray-700"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- Navigation Menu -->
+      <nav class="border-t border-gray-100">
+        <div class="container mx-auto px-4">
+          <ul class="flex space-x-8">
+            <li>
+              <a
+                href="https://readdy.ai/home/a8437a69-63fe-4eb6-ac64-02df0ef18380/17a55a8f-50c6-4bc6-9fd7-966cfadee037"
+                data-readdy="true"
+                class="block py-4 text-sm hover:text-primary"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a href="#" class="block py-4 text-sm hover:text-primary"
+                >New Arrivals</a
+              >
+            </li>
+            <li>
+              <a href="#" class="block py-4 text-sm hover:text-primary"
+                >Women</a
+              >
+            </li>
+            <li>
+              <a href="#" class="block py-4 text-sm hover:text-primary">Men</a>
+            </li>
+            <li>
+              <a
+                href="https://readdy.ai/home/a8437a69-63fe-4eb6-ac64-02df0ef18380/959234b3-cf2b-4abd-badd-067b7668f937"
+                data-readdy="true"
+                class="block py-4 text-sm hover:text-primary"
+                >Accessories</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block py-4 text-sm text-primary font-medium border-b-2 border-primary"
+                >Beauty</a
+              >
+            </li>
+            <li>
+              <a href="#" class="block py-4 text-sm hover:text-primary"
+                >Electronics</a
+              >
+            </li>
+            <li>
+              <a href="#" class="block py-4 text-sm hover:text-primary"
+                >Home & Living</a
+              >
+            </li>
+            <li>
+              <a href="#" class="block py-4 text-sm hover:text-primary">Sale</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="bg-gray-50 py-3">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center text-sm">
+          <a
+            href="https://readdy.ai/home/a8437a69-63fe-4eb6-ac64-02df0ef18380/17a55a8f-50c6-4bc6-9fd7-966cfadee037"
+            data-readdy="true"
+            class="text-gray-500 hover:text-primary"
+            >Home</a
+          >
+          <span class="mx-2 text-gray-400">/</span>
+          <span class="text-gray-800 font-medium">Beauty</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- Filters Sidebar -->
+        <div class="w-full md:w-1/4 bg-white rounded-lg shadow-sm p-6">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="font-bold text-lg">Filters</h2>
+            <button class="text-primary text-sm font-medium">Clear All</button>
+          </div>
+
+          <!-- Categories Filter -->
+          <div class="mb-6">
+            <h3 class="font-medium mb-3">Categories</h3>
+            <ul class="space-y-2">
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>All Beauty</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                    checked
+                  />
+                  <span
+                    class="w-4 h-4 bg-primary border border-primary rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i class="ri-check-line text-white absolute text-xs"></i>
+                  </span>
+                  <span>Skincare</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Makeup</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Fragrances</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Hair Care</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Tools & Accessories</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Price Range Filter -->
+          <div class="mb-6">
+            <h3 class="font-medium mb-3">Price Range</h3>
+            <div class="px-1">
+              <input
+                type="range"
+                min="0"
+                max="500"
+                value="200"
+                class="price-range w-full h-2 bg-gray-200 rounded-full appearance-none cursor-pointer"
+              />
+              <div class="flex justify-between mt-2 text-sm text-gray-600">
+                <span>$0</span>
+                <span>$500</span>
+              </div>
+              <div class="mt-3 flex items-center">
+                <span class="text-sm text-gray-600">Selected: </span>
+                <span class="ml-1 font-medium">$0 - $200</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Brand Filter -->
+          <div class="mb-6">
+            <h3 class="font-medium mb-3">Brand</h3>
+            <ul class="space-y-2">
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Glow Botanicals</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                    checked
+                  />
+                  <span
+                    class="w-4 h-4 bg-primary border border-primary rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i class="ri-check-line text-white absolute text-xs"></i>
+                  </span>
+                  <span>Pure Radiance</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Luxe Beauty</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Natural Essence</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Derma Science</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Concerns Filter -->
+          <div class="mb-6">
+            <h3 class="font-medium mb-3">Concerns</h3>
+            <ul class="space-y-2">
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                    checked
+                  />
+                  <span
+                    class="w-4 h-4 bg-primary border border-primary rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i class="ri-check-line text-white absolute text-xs"></i>
+                  </span>
+                  <span>Aging</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Acne</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Hydration</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Brightening</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Sensitivity</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Product Type Filter -->
+          <div class="mb-6">
+            <h3 class="font-medium mb-3">Product Type</h3>
+            <ul class="space-y-2">
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Cleanser</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                    checked
+                  />
+                  <span
+                    class="w-4 h-4 bg-primary border border-primary rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i class="ri-check-line text-white absolute text-xs"></i>
+                  </span>
+                  <span>Serum</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Moisturizer</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Mask</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Sunscreen</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Skin Type Filter -->
+          <div class="mb-6">
+            <h3 class="font-medium mb-3">Skin Type</h3>
+            <ul class="space-y-2">
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Dry</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Oily</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                    checked
+                  />
+                  <span
+                    class="w-4 h-4 bg-primary border border-primary rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i class="ri-check-line text-white absolute text-xs"></i>
+                  </span>
+                  <span>Combination</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>Sensitive</span>
+                </label>
+              </li>
+              <li>
+                <label class="flex items-center">
+                  <input
+                    type="checkbox"
+                    class="w-4 h-4 rounded text-primary focus:ring-primary border-gray-300 hidden"
+                  />
+                  <span
+                    class="w-4 h-4 border border-gray-300 rounded flex items-center justify-center mr-2 relative"
+                  >
+                    <i
+                      class="ri-check-line text-white absolute text-xs opacity-0 checked:opacity-100"
+                    ></i>
+                  </span>
+                  <span>All Skin Types</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="w-full md:w-3/4">
+          <!-- Sort and View Options -->
+          <div
+            class="bg-white rounded-lg shadow-sm p-4 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4"
+          >
+            <div class="text-sm text-gray-600">
+              <span class="font-medium text-gray-800">132</span> products found
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="relative">
+                <select
+                  class="appearance-none bg-white border border-gray-200 rounded py-2 pl-4 pr-10 text-sm focus:outline-none focus:border-primary"
+                >
+                  <option>Sort by: Featured</option>
+                  <option>Newest</option>
+                  <option>Price: Low to High</option>
+                  <option>Price: High to Low</option>
+                  <option>Best Selling</option>
+                </select>
+                <div
+                  class="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none"
+                >
+                  <i class="ri-arrow-down-s-line text-gray-400"></i>
+                </div>
+              </div>
+              <div class="flex border border-gray-200 rounded overflow-hidden">
+                <button class="p-2 bg-primary text-white">
+                  <i class="ri-layout-grid-line"></i>
+                </button>
+                <button class="p-2 bg-white text-gray-600 hover:bg-gray-50">
+                  <i class="ri-list-check"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Products Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Product 1 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden group">
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Elegant%2520luxury%2520glass%2520bottle%2520of%2520anti-aging%2520serum%2520with%2520dropper%2520on%2520a%2520minimalist%2520white%2520background%252C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows%2520and%2520clean%2520styling%252C%2520high-quality%2520skincare%2520e-commerce%2520image%2520with%2520subtle%2520reflection&width=300&height=350&seq=123480&orientation=portrait"
+                  alt="Anti-Aging Serum"
+                  class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+                <div class="absolute top-3 right-3 flex flex-col gap-2">
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                  >
+                    <i class="ri-heart-line text-gray-500"></i>
+                  </button>
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                  >
+                    <i class="ri-eye-line text-gray-500"></i>
+                  </button>
+                </div>
+                <div
+                  class="absolute inset-x-0 bottom-0 bg-white bg-opacity-90 py-2 px-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                >
+                  <button
+                    class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-sm text-gray-500">Skincare</h3>
+                <p class="font-medium mt-1">Advanced Anti-Aging Serum</p>
+                <div class="flex justify-between items-center mt-2">
+                  <div class="flex items-center">
+                    <span class="text-primary font-medium">$89.99</span>
+                    <span class="text-gray-400 line-through text-sm ml-2"
+                      >$129.99</span
+                    >
+                  </div>
+                  <div class="flex">
+                    <div
+                      class="w-4 h-4 rounded-full bg-amber-100 border border-white"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden group">
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Elegant%2520luxury%2520makeup%2520palette%2520with%2520neutral%2520eyeshadow%2520colors%2520on%2520a%2520minimalist%2520white%2520background%252C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows%2520and%2520clean%2520styling%252C%2520high-quality%2520beauty%2520e-commerce%2520image&width=300&height=350&seq=123481&orientation=portrait"
+                  alt="Eyeshadow Palette"
+                  class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+                <div class="absolute top-3 right-3 flex flex-col gap-2">
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                  >
+                    <i class="ri-heart-line text-gray-500"></i>
+                  </button>
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                  >
+                    <i class="ri-eye-line text-gray-500"></i>
+                  </button>
+                </div>
+                <div
+                  class="absolute inset-x-0 bottom-0 bg-white bg-opacity-90 py-2 px-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                >
+                  <button
+                    class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-sm text-gray-500">Makeup</h3>
+                <p class="font-medium mt-1">Neutral Eyeshadow Palette</p>
+                <div class="flex justify-between items-center mt-2">
+                  <div class="flex items-center">
+                    <span class="text-primary font-medium">$45.99</span>
+                    <span class="text-gray-400 line-through text-sm ml-2"
+                      >$59.99</span
+                    >
+                  </div>
+                  <div class="flex">
+                    <div
+                      class="w-4 h-4 rounded-full bg-amber-700 border border-white"
+                    ></div>
+                    <div
+                      class="w-4 h-4 rounded-full bg-amber-300 border border-white -ml-1"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden group">
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Elegant%2520luxury%2520perfume%2520bottle%2520with%2520gold%2520accents%2520on%2520a%2520minimalist%2520white%2520background%252C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows%2520and%2520clean%2520styling%252C%2520high-quality%2520fragrance%2520e-commerce%2520image&width=300&height=350&seq=123482&orientation=portrait"
+                  alt="Luxury Perfume"
+                  class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+                <div class="absolute top-3 right-3 flex flex-col gap-2">
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                  >
+                    <i class="ri-heart-line text-gray-500"></i>
+                  </button>
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                  >
+                    <i class="ri-eye-line text-gray-500"></i>
+                  </button>
+                </div>
+                <div
+                  class="absolute inset-x-0 bottom-0 bg-white bg-opacity-90 py-2 px-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                >
+                  <button
+                    class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-sm text-gray-500">Fragrances</h3>
+                <p class="font-medium mt-1">Luxe Eau de Parfum</p>
+                <div class="flex justify-between items-center mt-2">
+                  <div class="flex items-center">
+                    <span class="text-primary font-medium">$119.99</span>
+                    <span class="text-gray-400 line-through text-sm ml-2"
+                      >$149.99</span
+                    >
+                  </div>
+                  <div class="flex">
+                    <div
+                      class="w-4 h-4 rounded-full bg-amber-100 border border-white"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden group">
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Elegant%2520luxury%2520hair%2520care%2520shampoo%2520and%2520conditioner%2520bottles%2520on%2520a%2520minimalist%2520white%2520background%252C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows%2520and%2520clean%2520styling%252C%2520high-quality%2520beauty%2520e-commerce%2520image&width=300&height=350&seq=123483&orientation=portrait"
+                  alt="Hair Care Set"
+                  class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+                <div class="absolute top-3 right-3 flex flex-col gap-2">
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                  >
+                    <i class="ri-heart-line text-gray-500"></i>
+                  </button>
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                  >
+                    <i class="ri-eye-line text-gray-500"></i>
+                  </button>
+                </div>
+                <div
+                  class="absolute inset-x-0 bottom-0 bg-white bg-opacity-90 py-2 px-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                >
+                  <button
+                    class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-sm text-gray-500">Hair Care</h3>
+                <p class="font-medium mt-1">
+                  Hydrating Shampoo & Conditioner Set
+                </p>
+                <div class="flex justify-between items-center mt-2">
+                  <div class="flex items-center">
+                    <span class="text-primary font-medium">$32.99</span>
+                    <span class="text-gray-400 line-through text-sm ml-2"
+                      >$45.99</span
+                    >
+                  </div>
+                  <div class="flex">
+                    <div
+                      class="w-4 h-4 rounded-full bg-blue-100 border border-white"
+                    ></div>
+                    <div
+                      class="w-4 h-4 rounded-full bg-blue-200 border border-white -ml-1"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden group">
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Elegant%2520luxury%2520facial%2520cleansing%2520brush%2520tool%2520on%2520a%2520minimalist%2520white%2520background%252C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows%2520and%2520clean%2520styling%252C%2520high-quality%2520beauty%2520accessory%2520e-commerce%2520image&width=300&height=350&seq=123484&orientation=portrait"
+                  alt="Facial Cleansing Brush"
+                  class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+                <div class="absolute top-3 right-3 flex flex-col gap-2">
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                  >
+                    <i class="ri-heart-line text-gray-500"></i>
+                  </button>
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                  >
+                    <i class="ri-eye-line text-gray-500"></i>
+                  </button>
+                </div>
+                <div
+                  class="absolute inset-x-0 bottom-0 bg-white bg-opacity-90 py-2 px-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                >
+                  <button
+                    class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-sm text-gray-500">Tools & Accessories</h3>
+                <p class="font-medium mt-1">Sonic Facial Cleansing Brush</p>
+                <div class="flex justify-between items-center mt-2">
+                  <div class="flex items-center">
+                    <span class="text-primary font-medium">$79.99</span>
+                    <span class="text-gray-400 line-through text-sm ml-2"
+                      >$99.99</span
+                    >
+                  </div>
+                  <div class="flex">
+                    <div
+                      class="w-4 h-4 rounded-full bg-pink-100 border border-white"
+                    ></div>
+                    <div
+                      class="w-4 h-4 rounded-full bg-blue-100 border border-white -ml-1"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden group">
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Elegant%2520luxury%2520hydrating%2520face%2520mask%2520jar%2520on%2520a%2520minimalist%2520white%2520background%252C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows%2520and%2520clean%2520styling%252C%2520high-quality%2520skincare%2520e-commerce%2520image&width=300&height=350&seq=123485&orientation=portrait"
+                  alt="Hydrating Face Mask"
+                  class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+                <div class="absolute top-3 right-3 flex flex-col gap-2">
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                  >
+                    <i class="ri-heart-line text-gray-500"></i>
+                  </button>
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                  >
+                    <i class="ri-eye-line text-gray-500"></i>
+                  </button>
+                </div>
+                <div
+                  class="absolute inset-x-0 bottom-0 bg-white bg-opacity-90 py-2 px-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                >
+                  <button
+                    class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-sm text-gray-500">Skincare</h3>
+                <p class="font-medium mt-1">Hydrating Overnight Mask</p>
+                <div class="flex justify-between items-center mt-2">
+                  <div class="flex items-center">
+                    <span class="text-primary font-medium">$49.99</span>
+                    <span class="text-gray-400 line-through text-sm ml-2"
+                      >$65.99</span
+                    >
+                  </div>
+                  <div class="flex">
+                    <div
+                      class="w-4 h-4 rounded-full bg-blue-200 border border-white"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden group">
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Elegant%2520luxury%2520lipstick%2520in%2520red%2520shade%2520on%2520a%2520minimalist%2520white%2520background%252C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows%2520and%2520clean%2520styling%252C%2520high-quality%2520makeup%2520e-commerce%2520image&width=300&height=350&seq=123486&orientation=portrait"
+                  alt="Red Lipstick"
+                  class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+                <div class="absolute top-3 right-3 flex flex-col gap-2">
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                  >
+                    <i class="ri-heart-line text-gray-500"></i>
+                  </button>
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                  >
+                    <i class="ri-eye-line text-gray-500"></i>
+                  </button>
+                </div>
+                <div
+                  class="absolute inset-x-0 bottom-0 bg-white bg-opacity-90 py-2 px-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                >
+                  <button
+                    class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-sm text-gray-500">Makeup</h3>
+                <p class="font-medium mt-1">Creamy Matte Lipstick</p>
+                <div class="flex justify-between items-center mt-2">
+                  <div class="flex items-center">
+                    <span class="text-primary font-medium">$24.99</span>
+                    <span class="text-gray-400 line-through text-sm ml-2"
+                      >$32.99</span
+                    >
+                  </div>
+                  <div class="flex">
+                    <div
+                      class="w-4 h-4 rounded-full bg-red-500 border border-white"
+                    ></div>
+                    <div
+                      class="w-4 h-4 rounded-full bg-pink-300 border border-white -ml-1"
+                    ></div>
+                    <div
+                      class="w-4 h-4 rounded-full bg-red-800 border border-white -ml-1"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden group">
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Elegant%2520luxury%2520vitamin%2520C%2520serum%2520in%2520glass%2520bottle%2520on%2520a%2520minimalist%2520white%2520background%252C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows%2520and%2520clean%2520styling%252C%2520high-quality%2520skincare%2520e-commerce%2520image&width=300&height=350&seq=123487&orientation=portrait"
+                  alt="Vitamin C Serum"
+                  class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+                <div class="absolute top-3 right-3 flex flex-col gap-2">
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                  >
+                    <i class="ri-heart-line text-gray-500"></i>
+                  </button>
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                  >
+                    <i class="ri-eye-line text-gray-500"></i>
+                  </button>
+                </div>
+                <div
+                  class="absolute inset-x-0 bottom-0 bg-white bg-opacity-90 py-2 px-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                >
+                  <button
+                    class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-sm text-gray-500">Skincare</h3>
+                <p class="font-medium mt-1">Brightening Vitamin C Serum</p>
+                <div class="flex justify-between items-center mt-2">
+                  <div class="flex items-center">
+                    <span class="text-primary font-medium">$59.99</span>
+                    <span class="text-gray-400 line-through text-sm ml-2"
+                      >$79.99</span
+                    >
+                  </div>
+                  <div class="flex">
+                    <div
+                      class="w-4 h-4 rounded-full bg-orange-100 border border-white"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Product 9 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden group">
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=Elegant%2520luxury%2520facial%2520sunscreen%2520tube%2520on%2520a%2520minimalist%2520white%2520background%252C%2520professional%2520product%2520photography%2520with%2520soft%2520shadows%2520and%2520clean%2520styling%252C%2520high-quality%2520skincare%2520e-commerce%2520image&width=300&height=350&seq=123488&orientation=portrait"
+                  alt="Facial Sunscreen"
+                  class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+                <div class="absolute top-3 right-3 flex flex-col gap-2">
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                  >
+                    <i class="ri-heart-line text-gray-500"></i>
+                  </button>
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                  >
+                    <i class="ri-eye-line text-gray-500"></i>
+                  </button>
+                </div>
+                <div
+                  class="absolute inset-x-0 bottom-0 bg-white bg-opacity-90 py-2 px-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300"
+                >
+                  <button
+                    class="w-full bg-primary text-white py-2 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+              <div class="p-4">
+                <h3 class="text-sm text-gray-500">Skincare</h3>
+                <p class="font-medium mt-1">
+                  Lightweight Facial Sunscreen SPF 50
+                </p>
+                <div class="flex justify-between items-center mt-2">
+                  <div class="flex items-center">
+                    <span class="text-primary font-medium">$28.99</span>
+                    <span class="text-gray-400 line-through text-sm ml-2"
+                      >$38.99</span
+                    >
+                  </div>
+                  <div class="flex">
+                    <div
+                      class="w-4 h-4 rounded-full bg-yellow-50 border border-white"
+                    ></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="mt-10 flex justify-center">
+            <div class="flex items-center space-x-1">
+              <a
+                href="#"
+                class="px-4 py-2 border border-gray-300 rounded-button text-gray-600 hover:bg-gray-50 whitespace-nowrap"
+                >Previous</a
+              >
+              <a
+                href="#"
+                class="px-4 py-2 border border-primary bg-primary text-white rounded-button whitespace-nowrap"
+                >1</a
+              >
+              <a
+                href="#"
+                class="px-4 py-2 border border-gray-300 rounded-button text-gray-600 hover:bg-gray-50 whitespace-nowrap"
+                >2</a
+              >
+              <a
+                href="#"
+                class="px-4 py-2 border border-gray-300 rounded-button text-gray-600 hover:bg-gray-50 whitespace-nowrap"
+                >3</a
+              >
+              <span class="px-4 py-2 text-gray-600">...</span>
+              <a
+                href="#"
+                class="px-4 py-2 border border-gray-300 rounded-button text-gray-600 hover:bg-gray-50 whitespace-nowrap"
+                >10</a
+              >
+              <a
+                href="#"
+                class="px-4 py-2 border border-gray-300 rounded-button text-gray-600 hover:bg-gray-50 whitespace-nowrap"
+                >Next</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-2xl mx-auto text-center">
+          <h2 class="text-2xl font-bold mb-3">Subscribe to Our Newsletter</h2>
+          <p class="text-gray-600 mb-6">
+            Stay updated with our latest collections and exclusive offers.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 justify-center">
+            <input
+              type="email"
+              placeholder="Your email address"
+              class="px-4 py-3 border border-gray-300 rounded-button flex-grow max-w-md"
+            />
+            <button
+              class="bg-primary text-white px-6 py-3 rounded-button font-medium hover:bg-primary/90 transition whitespace-nowrap"
+            >
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Back to top button -->
+    <div class="fixed bottom-6 right-6">
+      <button
+        id="backToTop"
+        class="w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300"
+      >
+        <i class="ri-arrow-up-line text-xl"></i>
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 pt-12 pb-6">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          <div>
+            <a
+              href="https://readdy.ai/home/a8437a69-63fe-4eb6-ac64-02df0ef18380/17a55a8f-50c6-4bc6-9fd7-966cfadee037"
+              data-readdy="true"
+              class="text-primary text-3xl font-['Pacifico'] mb-4 inline-block"
+              >logo</a
+            >
+            <p class="text-gray-600 mt-4">
+              Your one-stop destination for trendy fashion and beauty products.
+            </p>
+            <div class="flex space-x-4 mt-6">
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition"
+              >
+                <i class="ri-facebook-fill"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition"
+              >
+                <i class="ri-instagram-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition"
+              >
+                <i class="ri-twitter-x-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-primary hover:text-white transition"
+              >
+                <i class="ri-pinterest-line"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="font-medium text-lg mb-4">Shop</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-600 hover:text-primary">Women</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-600 hover:text-primary">Men</a>
+              </li>
+              <li>
+                <a
+                  href="https://readdy.ai/home/a8437a69-63fe-4eb6-ac64-02df0ef18380/959234b3-cf2b-4abd-badd-067b7668f937"
+                  data-readdy="true"
+                  class="text-gray-600 hover:text-primary"
+                  >Accessories</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-600 hover:text-primary">Beauty</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-600 hover:text-primary">Sale</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-medium text-lg mb-4">Help</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-600 hover:text-primary"
+                  >Customer Service</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-600 hover:text-primary"
+                  >My Account</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-600 hover:text-primary"
+                  >Find a Store</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-600 hover:text-primary"
+                  >Legal & Privacy</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-600 hover:text-primary"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-medium text-lg mb-4">About</h3>
+            <ul class="space-y-3">
+              <li>
+                <a href="#" class="text-gray-600 hover:text-primary"
+                  >Our Story</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-600 hover:text-primary">Careers</a>
+              </li>
+              <li>
+                <a href="#" class="text-gray-600 hover:text-primary"
+                  >Corporate Responsibility</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-600 hover:text-primary"
+                  >Investors</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="pt-8 border-t border-gray-100">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-500 text-sm">
+              © 2025 Fashion Store. All rights reserved.
+            </p>
+            <div class="flex items-center space-x-4 mt-4 md:mt-0">
+              <div class="flex items-center space-x-2">
+                <i class="ri-visa-line text-gray-600 text-xl"></i>
+                <i class="ri-mastercard-line text-gray-600 text-xl"></i>
+                <i class="ri-paypal-line text-gray-600 text-xl"></i>
+                <i class="ri-apple-fill text-gray-600 text-xl"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Custom checkbox functionality
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach((checkbox) => {
+          checkbox.addEventListener("change", function () {
+            const span = this.nextElementSibling;
+            if (this.checked) {
+              span.classList.add("bg-primary", "border-primary");
+              span.classList.remove("border-gray-300");
+              const icon = span.querySelector("i");
+              if (icon) icon.classList.remove("opacity-0");
+            } else {
+              span.classList.remove("bg-primary", "border-primary");
+              span.classList.add("border-gray-300");
+              const icon = span.querySelector("i");
+              if (icon) icon.classList.add("opacity-0");
+            }
+          });
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Price range slider
+        const priceRange = document.querySelector(".price-range");
+        if (priceRange) {
+          priceRange.addEventListener("input", function () {
+            const value = this.value;
+            const maxValue = this.max;
+            const selectedPriceElement =
+              this.parentElement.querySelector(".font-medium");
+            selectedPriceElement.textContent = `$0 - $${value}`;
+          });
+        }
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Back to top button
+        const backToTopButton = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", function () {
+          if (window.pageYOffset > 300) {
+            backToTopButton.classList.remove("opacity-0", "invisible");
+            backToTopButton.classList.add("opacity-100", "visible");
+          } else {
+            backToTopButton.classList.add("opacity-0", "invisible");
+            backToTopButton.classList.remove("opacity-100", "visible");
+          }
+        });
+
+        backToTopButton.addEventListener("click", function () {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

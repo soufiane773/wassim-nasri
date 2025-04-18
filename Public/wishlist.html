@@ -1,0 +1,318 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wishlist - ShopEase</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: "#3b82f6", secondary: "#f59e0b" },
+          borderRadius: {
+            none: "0px",
+            sm: "4px",
+            DEFAULT: "8px",
+            md: "12px",
+            lg: "16px",
+            xl: "20px",
+            "2xl": "24px",
+            "3xl": "32px",
+            full: "9999px",
+            button: "8px",
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-100">
+  <header class="header sticky top-0 z-50 bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="font-['Pacifico'] text-3xl text-primary">lava</a>
+      <div class="search-bar hidden md:flex items-center flex-1 max-w-xl mx-6">
+        <div class="relative w-full">
+          <input type="text" class="search-input w-full py-2 pl-10 pr-4 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Search for products..." />
+          <div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+            <i class="ri-search-line"></i>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center space-x-6">
+        <a href="wishlist.html" class="relative text-gray-700 hover:text-primary">
+          <i class="ri-heart-line ri-lg"></i>
+          <span id="wishlist-count" class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+        </a>
+        <a href="cart.html" class="relative text-gray-700 hover:text-primary">
+          <i class="ri-shopping-cart-line ri-lg"></i>
+          <span id="cart-count" class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+        </a>
+        <a href="login.html" class="text-gray-700 hover:text-primary relative" id="user-profile-link">
+          <i class="ri-user-line ri-lg"></i>
+          <span id="user-name" class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center hidden"></span>
+        </a>
+      </div>
+    </div>
+  </header>
+  <main class="py-20 px-4">
+    <div class="max-w-6xl mx-auto bg-white p-8 rounded-xl shadow-md">
+      <h1 class="text-3xl font-bold mb-6">Your Wishlist</h1>
+      
+      <!-- Wishlist Items Container -->
+      <div id="wishlist-items-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Wishlist items will be dynamically inserted here -->
+      </div>
+      
+      <!-- Empty Wishlist Message -->
+      <div id="empty-wishlist-message" class="hidden">
+        <p class="text-gray-500 text-lg">Your wishlist is currently empty.</p>
+        <a class="text-primary font-medium hover:underline mt-4 inline-block" href="index.html">Continue Shopping</a>
+      </div>
+    </div>
+  </main>
+  <footer class="footer bg-gray-800 text-white py-6 mt-10">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm text-gray-400">© 2025 ShopEase. All rights reserved.</p>
+      <div class="flex space-x-4 mt-4 md:mt-0">
+        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary">
+          <i class="ri-facebook-fill"></i>
+        </a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary">
+          <i class="ri-twitter-x-fill"></i>
+        </a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary">
+          <i class="ri-instagram-fill"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check login status and update UI
+      function checkLoginStatus() {
+        console.log("Checking login status...");
+        
+        // Show loading state
+        const userProfileLink = document.getElementById('user-profile-link');
+        const userNameSpan = document.getElementById('user-name');
+        userNameSpan.classList.add('hidden');
+        
+        fetch('/api/auth/check-login', {
+          method: 'GET',
+          credentials: 'include',
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          console.log("Login check response status:", response.status);
+          console.log("Login check response headers:", Object.fromEntries(response.headers.entries()));
+          
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log("Login check data:", data);
+          
+          if (data.loggedIn && data.username) {
+            console.log("User is logged in:", data.username);
+            // User is logged in
+            userProfileLink.href = 'profile.html';
+            userNameSpan.textContent = data.username.charAt(0).toUpperCase();
+            userNameSpan.classList.remove('hidden');
+            
+            // Update the icon to show logged in state
+            const userIcon = userProfileLink.querySelector('.ri-user-line');
+            if (userIcon) {
+              userIcon.classList.remove('ri-user-line');
+              userIcon.classList.add('ri-user-fill');
+            }
+            
+            // Store login status
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('username', data.username);
+          } else {
+            console.log("User is not logged in");
+            // User is not logged in (guest)
+            userProfileLink.href = 'login.html';
+            userNameSpan.classList.add('hidden');
+            
+            // Update the icon to show logged out state
+            const userIcon = userProfileLink.querySelector('.ri-user-fill, .ri-user-line');
+            if (userIcon) {
+              userIcon.classList.remove('ri-user-fill');
+              userIcon.classList.add('ri-user-line');
+            }
+            
+            // Clear login status
+            localStorage.setItem('isLoggedIn', 'false');
+            localStorage.removeItem('username');
+          }
+        })
+        .catch(error => {
+          console.error('Error checking login status:', error);
+          // Default to guest mode on error
+          userProfileLink.href = 'login.html';
+          userNameSpan.classList.add('hidden');
+          
+          // Update the icon to show logged out state
+          const userIcon = userProfileLink.querySelector('.ri-user-fill, .ri-user-line');
+          if (userIcon) {
+            userIcon.classList.remove('ri-user-fill');
+            userIcon.classList.add('ri-user-line');
+          }
+          
+          localStorage.setItem('isLoggedIn', 'false');
+          localStorage.removeItem('username');
+        });
+      }
+
+      // Check login status when page loads
+      checkLoginStatus();
+
+      // Update cart and wishlist counts
+      updateCounts();
+      
+      // Load wishlist items
+      loadWishlistItems();
+      
+      // Update cart and wishlist counts
+      function updateCounts() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        
+        // Update cart count to show total quantity
+        const cartCount = cart.reduce((total, item) => total + (item.quantity || 1), 0);
+        document.getElementById('cart-count').textContent = cartCount;
+        
+        // Update wishlist count
+        document.getElementById('wishlist-count').textContent = wishlist.length;
+      }
+      
+      // Load wishlist items from localStorage
+      function loadWishlistItems() {
+        const wishlistItemsContainer = document.getElementById('wishlist-items-container');
+        const emptyWishlistMessage = document.getElementById('empty-wishlist-message');
+        
+        // Clear existing items
+        wishlistItemsContainer.innerHTML = '';
+        
+        // Get wishlist from localStorage
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        
+        if (wishlist.length === 0) {
+          // Show empty wishlist message
+          emptyWishlistMessage.classList.remove('hidden');
+        } else {
+          // Hide empty wishlist message
+          emptyWishlistMessage.classList.add('hidden');
+          
+          // Add each item to the wishlist
+          wishlist.forEach((item, index) => {
+            // Create wishlist item element
+            const wishlistItem = document.createElement('div');
+            wishlistItem.className = 'border border-gray-200 rounded-lg p-4 bg-white shadow-sm';
+            wishlistItem.dataset.index = index;
+            
+            wishlistItem.innerHTML = `
+              <div class="relative">
+                <img alt="${item.name}" class="w-full h-48 object-cover rounded-md mb-4" src="${item.image}">
+              </div>
+              <h3 class="text-lg font-semibold mb-1">${item.name}</h3>
+              <p class="text-sm text-gray-500 mb-2">${item.category}</p>
+              <div class="flex items-center mb-2">
+                <div class="rating flex text-secondary">${item.rating || ''}</div>
+                <span class="text-xs text-gray-500 ml-2">${item.reviews || ''}</span>
+              </div>
+              <p class="text-lg font-bold text-primary mb-4">${item.price}</p>
+              <div class="flex space-x-2">
+                <button class="add-to-cart flex-1 bg-primary text-white py-2 rounded hover:bg-primary/90">Add to Cart</button>
+                <button class="remove-item flex-1 border border-gray-300 text-gray-600 py-2 rounded hover:bg-gray-50">Remove</button>
+              </div>
+            `;
+            
+            wishlistItemsContainer.appendChild(wishlistItem);
+            
+            // Add event listeners directly to the buttons in this item
+            const addToCartBtn = wishlistItem.querySelector('.add-to-cart');
+            const removeItemBtn = wishlistItem.querySelector('.remove-item');
+            
+            addToCartBtn.addEventListener('click', () => addToCart(index));
+            removeItemBtn.addEventListener('click', () => removeItem(index));
+          });
+        }
+      }
+      
+      // Add item to cart
+      function addToCart(index) {
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        if (wishlist[index]) {
+          const item = wishlist[index];
+          
+          // Check if item already in cart using stable ID
+          const existingProductIndex = cart.findIndex(cartItem => cartItem.id === item.id);
+          
+          if (existingProductIndex !== -1) {
+            // Update quantity if product already in cart
+            cart[existingProductIndex].quantity += 1;
+            showToast('Product quantity updated in cart!');
+          } else {
+            // Add new product to cart
+            cart.push({...item, quantity: 1});
+            showToast('Product added to cart!');
+          }
+          
+          // Save updated cart
+          localStorage.setItem('cart', JSON.stringify(cart));
+          
+          // Update counts
+          updateCounts();
+        }
+      }
+      
+      // Remove item from wishlist
+      function removeItem(index) {
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        
+        if (index >= 0 && index < wishlist.length) {
+          wishlist.splice(index, 1);
+          localStorage.setItem('wishlist', JSON.stringify(wishlist));
+          updateCounts();
+          loadWishlistItems();
+          showToast('Product removed from wishlist!');
+        }
+      }
+      
+      // Show toast message
+      function showToast(message) {
+        const toast = document.createElement('div');
+        toast.className = 'fixed bottom-4 right-4 bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 translate-y-0 opacity-100';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        
+        // Animate out after 3 seconds
+        setTimeout(() => {
+          toast.classList.add('translate-y-2', 'opacity-0');
+          setTimeout(() => toast.remove(), 300);
+        }, 3000);
+      }
+    });
+  </script>
+</body>
+</html>

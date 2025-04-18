@@ -1,0 +1,264 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Orders - ShopEase</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { primary: "#3b82f6", secondary: "#f59e0b" },
+          borderRadius: {
+            none: "0px",
+            sm: "4px",
+            DEFAULT: "8px",
+            md: "12px",
+            lg: "16px",
+            xl: "20px",
+            "2xl": "24px",
+            "3xl": "32px",
+            full: "9999px",
+            button: "8px",
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="bg-gray-100">
+  <header class="header sticky top-0 z-50 bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="font-['Pacifico'] text-3xl text-primary">lava</a>
+      <div class="search-bar hidden md:flex items-center flex-1 max-w-xl mx-6">
+        <div class="relative w-full">
+          <input type="text" class="search-input w-full py-2 pl-10 pr-4 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Search for products..." />
+          <div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+            <i class="ri-search-line"></i>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center space-x-6">
+        <a href="wishlist.html" class="relative text-gray-700 hover:text-primary">
+          <i class="ri-heart-line ri-lg"></i>
+          <span id="wishlist-count" class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+        </a>
+        <a href="cart.html" class="relative text-gray-700 hover:text-primary">
+          <i class="ri-shopping-cart-line ri-lg"></i>
+          <span id="cart-count" class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span>
+        </a>
+        <a href="orders.html" class="text-gray-700 hover:text-primary">
+          <i class="ri-file-list-line ri-lg"></i>
+        </a>
+        <a href="login.html" class="text-gray-700 hover:text-primary">
+          <i class="ri-user-line ri-lg"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+  <main class="py-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-3xl font-bold mb-6">Your Order History</h1>
+      
+      <!-- Orders Container -->
+      <div id="orders-container">
+        <!-- Orders will be dynamically inserted here -->
+      </div>
+      
+      <!-- Empty Orders Message -->
+      <div id="empty-orders-message" class="hidden bg-white p-8 rounded-xl shadow-md text-center">
+        <p class="text-gray-500 text-lg">You haven't placed any orders yet.</p>
+        <a class="text-primary font-medium hover:underline mt-4 inline-block" href="index.html">Start Shopping</a>
+      </div>
+      
+      <!-- Loading Spinner -->
+      <div id="loading-spinner" class="flex justify-center items-center py-12">
+        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+      </div>
+    </div>
+  </main>
+  <footer class="footer bg-gray-800 text-white py-6 mt-10">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm text-gray-400">© 2025 ShopEase. All rights reserved.</p>
+      <div class="flex space-x-4 mt-4 md:mt-0">
+        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary">
+          <i class="ri-facebook-fill"></i>
+        </a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary">
+          <i class="ri-twitter-x-fill"></i>
+        </a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary">
+          <i class="ri-instagram-fill"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Update cart and wishlist counts
+      updateCounts();
+      
+      // Load orders
+      loadOrders();
+      
+      // Update cart and wishlist counts
+      function updateCounts() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+        
+        // Validate cart data structure
+        cart = cart.filter(item => item && typeof item === 'object' && item.name && item.price);
+        
+        // Calculate total quantity in cart
+        const cartQuantity = cart.reduce((total, item) => total + (parseInt(item.quantity) || 1), 0);
+        
+        document.getElementById('cart-count').textContent = cartQuantity;
+        document.getElementById('wishlist-count').textContent = wishlist.length;
+      }
+      
+      // Load orders from the server
+      function loadOrders() {
+        const ordersContainer = document.getElementById('orders-container');
+        const emptyOrdersMessage = document.getElementById('empty-orders-message');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        
+        // Show loading spinner
+        loadingSpinner.classList.remove('hidden');
+        
+        // First check if user is logged in
+        fetch('/api/auth/check-login', {
+          method: 'GET',
+          credentials: 'include' // Include cookies for session
+        })
+        .then(response => {
+          if (!response.ok) {
+            // User not logged in, redirect to login page
+            window.location.href = 'login.html';
+            return;
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (!data || !data.loggedIn) {
+            // User not logged in, redirect to login page
+            window.location.href = 'login.html';
+            return;
+          }
+          
+          // User is logged in, fetch orders
+          return fetch('/api/order/my-orders', {
+            credentials: 'include' // Include cookies for session
+          });
+        })
+        .then(response => {
+          if (!response || !response.ok) {
+            if (response && response.status === 403) {
+              // User not logged in
+              window.location.href = 'login.html';
+              return;
+            }
+            throw new Error('Failed to fetch orders');
+          }
+          return response.json();
+        })
+        .then(orders => {
+          if (!orders) return; // User was redirected to login
+          
+          // Hide loading spinner
+          loadingSpinner.classList.add('hidden');
+          
+          if (!orders || orders.length === 0) {
+            // Show empty orders message
+            emptyOrdersMessage.classList.remove('hidden');
+            ordersContainer.innerHTML = '';
+            return;
+          }
+          
+          // Hide empty orders message
+          emptyOrdersMessage.classList.add('hidden');
+          
+          // Group orders by order_id
+          const groupedOrders = {};
+          orders.forEach(order => {
+            if (!groupedOrders[order.order_id]) {
+              groupedOrders[order.order_id] = {
+                order_id: order.order_id,
+                created_at: new Date(order.created_at).toLocaleDateString(),
+                items: []
+              };
+            }
+            
+            if (order.product_id) {
+              groupedOrders[order.order_id].items.push({
+                product_id: order.product_id,
+                product_name: order.product_name,
+                product_image: order.product_image,
+                quantity: order.quantity,
+                price: order.price
+              });
+            }
+          });
+          
+          // Clear orders container
+          ordersContainer.innerHTML = '';
+          
+          // Add each order to the container
+          Object.values(groupedOrders).forEach(order => {
+            // Calculate order total
+            const orderTotal = order.items.reduce((total, item) => {
+              return total + (parseFloat(item.price) * parseInt(item.quantity));
+            }, 0);
+            
+            // Create order element
+            const orderElement = document.createElement('div');
+            orderElement.className = 'bg-white p-6 rounded-xl shadow-md mb-6';
+            
+            orderElement.innerHTML = `
+              <div class="flex justify-between items-center mb-4">
+                <div>
+                  <h3 class="font-medium">Order #${order.order_id}</h3>
+                  <p class="text-sm text-gray-500">Placed on ${order.created_at}</p>
+                </div>
+                <div class="text-right">
+                  <p class="font-medium">Total: $${orderTotal.toFixed(2)}</p>
+                </div>
+              </div>
+              <div class="border-t border-gray-200 pt-4">
+                ${order.items.map(item => `
+                  <div class="flex items-center mb-4">
+                    <div class="w-16 h-16 flex-shrink-0">
+                      <img src="${item.product_image}" alt="${item.product_name}" class="w-full h-full object-cover rounded-md">
+                    </div>
+                    <div class="ml-4 flex-grow">
+                      <h4 class="font-medium">${item.product_name}</h4>
+                      <p class="text-sm text-gray-500">Quantity: ${item.quantity}</p>
+                      <p class="text-sm font-medium">$${item.price}</p>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            `;
+            
+            ordersContainer.appendChild(orderElement);
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching orders:', error);
+          loadingSpinner.classList.add('hidden');
+          ordersContainer.innerHTML = `
+            <div class="bg-white p-8 rounded-xl shadow-md text-center">
+              <p class="text-red-500">Failed to load orders. Please try again later.</p>
+            </div>
+          `;
+        });
+      }
+    });
+  </script>
+</body>
+</html> 

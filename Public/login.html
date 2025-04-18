@@ -1,0 +1,306 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - ShopEase</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+</head>
+<body class="bg-gray-100">
+  <header class="header sticky top-0 z-50 bg-white shadow-sm">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="font-['Pacifico'] text-3xl text-primary">lava</a>
+      <div class="search-bar hidden md:flex items-center flex-1 max-w-xl mx-6">
+        <div class="relative w-full">
+          <input type="text" class="search-input w-full py-2 pl-10 pr-4 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Search for products..." />
+          <div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+            <i class="ri-search-line"></i>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center space-x-6">
+        <a href="wishlist.html" class="relative text-gray-700 hover:text-primary">
+          <i class="ri-heart-line ri-lg"></i>
+        </a>
+        <a href="cart.html" class="relative text-gray-700 hover:text-primary">
+          <i class="ri-shopping-cart-line ri-lg"></i>
+        </a>
+        <a href="login.html" class="text-gray-700 hover:text-primary relative" id="user-profile-link">
+          <i class="ri-user-line ri-lg"></i>
+          <span id="user-name" class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center hidden"></span>
+        </a>
+      </div>
+    </div>
+  </header>
+  <main class="flex items-center justify-center min-h-screen px-4">
+    <div class="bg-white p-10 rounded-2xl shadow-lg w-full max-w-md">
+      <h2 class="text-3xl font-bold text-center text-primary mb-6">Login to ShopEase</h2>
+      <form id="login-form" class="space-y-5">
+        <div>
+          <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+          <input type="text" id="username" name="username" required class="w-full px-4 py-2 border border-gray-300 rounded-lg mt-1 focus:ring-primary focus:border-primary" />
+        </div>
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <input type="password" id="password" name="password" required class="w-full px-4 py-2 border border-gray-300 rounded-lg mt-1 focus:ring-primary focus:border-primary" />
+        </div>
+        <button type="submit" class="w-full bg-primary text-black py-2 rounded-lg hover:bg-primary/90">Login</button>
+        <p id="login-message" class="text-center text-sm mt-2"></p>
+      </form>      
+      <p class="text-center text-sm text-gray-600 mt-4">Don't have an account? <a href="register.html" class="text-primary font-medium hover:underline">Register</a></p>
+    </div>
+  </main>
+  <footer class="footer bg-gray-800 text-white py-6 mt-10">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-sm text-gray-400">© 2025 ShopEase. All rights reserved.</p>
+      <div class="flex space-x-4 mt-4 md:mt-0">
+        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary">
+          <i class="ri-facebook-fill"></i>
+        </a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary">
+          <i class="ri-twitter-x-fill"></i>
+        </a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-primary">
+          <i class="ri-instagram-fill"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    console.log("Login page JS loaded ");
+  
+    // Check login status and update UI
+    function checkLoginStatus() {
+      console.log("Checking login status...");
+      
+      // Show loading state
+      const userProfileLink = document.getElementById('user-profile-link');
+      const userNameSpan = document.getElementById('user-name');
+      userNameSpan.classList.add('hidden');
+      
+      fetch('/api/auth/check-login', {
+        method: 'GET',
+        credentials: 'include',
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        console.log("Login check response status:", response.status);
+        console.log("Login check response headers:", Object.fromEntries(response.headers.entries()));
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log("Login check data:", data);
+        
+        if (data.loggedIn && data.username) {
+          console.log("User is logged in:", data.username);
+          // User is logged in
+          userProfileLink.href = 'profile.html';
+          userNameSpan.textContent = data.username.charAt(0).toUpperCase();
+          userNameSpan.classList.remove('hidden');
+          
+          // Update the icon to show logged in state
+          const userIcon = userProfileLink.querySelector('.ri-user-line');
+          if (userIcon) {
+            userIcon.classList.remove('ri-user-line');
+            userIcon.classList.add('ri-user-fill');
+          }
+          
+          // Store login status
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('username', data.username);
+          
+          // If we're on the login page and user is already logged in, redirect to profile
+          if (window.location.pathname.endsWith('login.html')) {
+            console.log("User already logged in, redirecting to profile...");
+            window.location.href = 'profile.html';
+          }
+        } else {
+          console.log("User is not logged in");
+          // User is not logged in (guest)
+          userProfileLink.href = 'login.html';
+          userNameSpan.classList.add('hidden');
+          
+          // Update the icon to show logged out state
+          const userIcon = userProfileLink.querySelector('.ri-user-fill, .ri-user-line');
+          if (userIcon) {
+            userIcon.classList.remove('ri-user-fill');
+            userIcon.classList.add('ri-user-line');
+          }
+          
+          // Clear login status
+          localStorage.setItem('isLoggedIn', 'false');
+          localStorage.removeItem('username');
+        }
+      })
+      .catch(error => {
+        console.error('Error checking login status:', error);
+        // Default to guest mode on error
+        userProfileLink.href = 'login.html';
+        userNameSpan.classList.add('hidden');
+        
+        // Update the icon to show logged out state
+        const userIcon = userProfileLink.querySelector('.ri-user-fill, .ri-user-line');
+        if (userIcon) {
+          userIcon.classList.remove('ri-user-fill');
+          userIcon.classList.add('ri-user-line');
+        }
+        
+        localStorage.setItem('isLoggedIn', 'false');
+        localStorage.removeItem('username');
+      });
+    }
+
+    // Check login status when page loads
+    checkLoginStatus();
+  
+    const form = document.getElementById('login-form');
+  
+    if (form) {
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+  
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        const msgEl = document.getElementById('login-message');
+        
+        // Clear previous messages
+        msgEl.textContent = '';
+        msgEl.className = 'text-center text-sm mt-2';
+        
+        // Validate input
+        if (!username || !password) {
+          console.log("Login validation failed: Missing credentials");
+          msgEl.textContent = 'Please enter both username and password.';
+          msgEl.className = 'text-red-600 text-center text-sm mt-2';
+          return;
+        }
+        
+        console.log("Login attempt with username:", username);
+        console.log("Current login status:", localStorage.getItem('isLoggedIn'));
+        console.log("Current session cookie:", document.cookie);
+  
+        try {
+          console.log("Sending login request to server...");
+          const res = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({ username, password }),
+            credentials: 'include'
+          });
+  
+          console.log("Login response status:", res.status);
+          console.log("Login response headers:", Object.fromEntries(res.headers.entries()));
+          const data = await res.json();
+          console.log("Login response data:", data);
+  
+          if (res.status === 401) {
+            console.log("Login failed: Invalid credentials");
+            msgEl.textContent = data.message || 'Invalid username or password';
+            msgEl.className = 'text-red-600 text-center text-sm mt-2';
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('user');
+            return;
+          }
+
+          if (res.ok) {
+            console.log("Login successful!");
+            console.log("Session cookie after login:", document.cookie);
+            msgEl.textContent = 'Login successful!';
+            msgEl.className = 'text-green-600 text-center text-sm mt-2';
+            
+            // Store login status and username
+            localStorage.setItem('isLoggedIn', 'true');
+            localStorage.setItem('username', data.username);
+            
+            // Update UI to show logged in state
+            const userProfileLink = document.getElementById('user-profile-link');
+            const userNameSpan = document.getElementById('user-name');
+            
+            userProfileLink.href = 'profile.html';
+            userNameSpan.textContent = username.charAt(0).toUpperCase();
+            userNameSpan.classList.remove('hidden');
+            
+            // Update the icon to show logged in state
+            const userIcon = userProfileLink.querySelector('.ri-user-line');
+            if (userIcon) {
+              userIcon.classList.remove('ri-user-line');
+              userIcon.classList.add('ri-user-fill');
+            }
+            
+            // Get return URL from query parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const returnTo = urlParams.get('returnTo');
+            console.log("Return URL:", returnTo);
+            
+            // Check for pending cart
+            const pendingCart = localStorage.getItem('pendingCart');
+            console.log("Pending cart:", pendingCart ? "exists" : "none");
+            if (pendingCart) {
+              // Restore the cart
+              localStorage.setItem('cart', pendingCart);
+              localStorage.removeItem('pendingCart');
+              console.log("Restored pending cart");
+            }
+            
+            // Verify login status before redirect
+            try {
+              const checkResponse = await fetch('/api/auth/check-login', {
+                credentials: 'include'
+              });
+              const checkData = await checkResponse.json();
+              console.log("Pre-redirect login check:", checkData);
+              
+              if (!checkData.loggedIn) {
+                console.warn("Login verification failed - user not logged in after successful login");
+                msgEl.textContent = 'Login verification failed. Please try again.';
+                msgEl.className = 'text-red-600 text-center text-sm mt-2';
+                return;
+              }
+            } catch (checkError) {
+              console.error("Login verification error:", checkError);
+            }
+            
+            setTimeout(() => {
+              // Redirect to return URL if specified, otherwise go to index
+              const redirectUrl = returnTo || 'index.html';
+              console.log("Redirecting to:", redirectUrl);
+              window.location.href = redirectUrl;
+            }, 1000);
+          }
+        } catch (err) {
+          console.error("Login error:", err);
+          msgEl.textContent = 'Server error. Please try again later.';
+          msgEl.className = 'text-red-600 text-center text-sm mt-2';
+          
+          // Clear any existing login state
+          localStorage.setItem('isLoggedIn', 'false');
+          localStorage.removeItem('username');
+          localStorage.removeItem('user');
+        }
+      });
+    } else {
+      console.error("Login form not found");
+    }
+  </script>
+    
+</body>
+</html>
