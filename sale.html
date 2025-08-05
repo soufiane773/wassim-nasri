@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sale - Fashion Store</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { primary: "#4285F4", secondary: "#34A853" },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+      .search-input:focus {
+      outline: none;
+      }
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+      }
+      .price-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #4285F4;
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      }
+      .price-slider::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #4285F4;
+      cursor: pointer;
+      border: 2px solid white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      }
+      .custom-checkbox:checked + label .checkbox-icon {
+      background-color: #4285F4;
+      border-color: #4285F4;
+      }
+      .custom-checkbox:checked + label .checkbox-icon i {
+      opacity: 1;
+      }
+      .color-radio:checked + label .color-circle {
+      box-shadow: 0 0 0 2px white, 0 0 0 3px #4285F4;
+      }
+      .discount-badge {
+      background: linear-gradient(135deg, #ff4e50, #f9d423);
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <!-- Header -->
+    <header class="border-b border-gray-100 sticky top-0 bg-white z-50">
+      <div
+        class="container mx-auto px-4 py-3 flex items-center justify-between"
+      >
+        <a
+          href="https://readdy.ai/home/7e2f9ea2-069c-493f-b8bb-ceaea6a1c8cb/1bc87721-683f-4521-a855-f00ddb2d8ad9"
+          data-readdy="true"
+          class="text-3xl font-['Pacifico'] text-primary"
+          >logo</a
+        >
+        <div class="relative flex-1 max-w-xl mx-8">
+          <div class="absolute inset-y-0 left-0 flex items-center pl-3">
+            <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+              <i class="ri-search-line"></i>
+            </div>
+          </div>
+          <input
+            type="text"
+            placeholder="Search for products..."
+            class="search-input w-full pl-10 pr-4 py-2 border border-gray-200 rounded-full text-sm bg-gray-50"
+          />
+        </div>
+        <div class="flex items-center space-x-5">
+          <div class="relative w-8 h-8 flex items-center justify-center">
+            <i class="ri-heart-line text-gray-700"></i>
+            <span
+              class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center"
+              >3</span
+            >
+          </div>
+          <div class="relative w-8 h-8 flex items-center justify-center">
+            <i class="ri-shopping-bag-line text-gray-700"></i>
+            <span
+              class="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center"
+              >2</span
+            >
+          </div>
+          <div class="w-8 h-8 flex items-center justify-center">
+            <i class="ri-user-line text-gray-700"></i>
+          </div>
+        </div>
+      </div>
+      <nav class="container mx-auto px-4 py-3">
+        <ul class="flex space-x-8">
+          <li>
+            <a
+              href="https://readdy.ai/home/7e2f9ea2-069c-493f-b8bb-ceaea6a1c8cb/1bc87721-683f-4521-a855-f00ddb2d8ad9"
+              data-readdy="true"
+              class="text-gray-600 hover:text-primary"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="#" class="text-gray-600 hover:text-primary"
+              >New Arrivals</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://readdy.ai/home/7e2f9ea2-069c-493f-b8bb-ceaea6a1c8cb/0b406b4b-a4d0-42f6-9feb-d8029657fd23"
+              data-readdy="true"
+              class="text-gray-600 hover:text-primary"
+              >Spring Collection</a
+            >
+          </li>
+          <li>
+            <a href="#" class="text-gray-600 hover:text-primary">Women</a>
+          </li>
+          <li>
+            <a
+              href="https://readdy.ai/home/7e2f9ea2-069c-493f-b8bb-ceaea6a1c8cb/de28b004-598c-457c-b06c-b187016ac9a1"
+              data-readdy="true"
+              class="text-gray-600 hover:text-primary"
+              >Men</a
+            >
+          </li>
+          <li>
+            <a href="#" class="text-gray-600 hover:text-primary">Accessories</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-600 hover:text-primary">Beauty</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-600 hover:text-primary">Electronics</a>
+          </li>
+          <li><a href="#" class="text-primary font-medium">Sale</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- Breadcrumb -->
+    <div class="bg-gray-50 py-3">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center text-sm">
+          <a
+            href="https://readdy.ai/home/7e2f9ea2-069c-493f-b8bb-ceaea6a1c8cb/1bc87721-683f-4521-a855-f00ddb2d8ad9"
+            data-readdy="true"
+            class="text-gray-500 hover:text-primary"
+            >Home</a
+          >
+          <span class="mx-2 text-gray-400">/</span>
+          <span class="text-primary font-medium">Sale</span>
+        </div>
+      </div>
+    </div>
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+      <div class="flex flex-col lg:flex-row gap-8">
+        <!-- Sidebar Filters -->
+        <div class="lg:w-1/4 bg-white rounded-lg shadow-sm p-6">
+          <div class="mb-8">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">
+              Discount Range
+            </h3>
+            <div class="space-y-3">
+              <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="discount-50-plus"
+                  class="hidden custom-checkbox"
+                  checked
+                />
+                <label
+                  for="discount-50-plus"
+                  class="flex items-center cursor-pointer"
+                >
+                  <div
+                    class="w-5 h-5 border border-gray-300 rounded flex items-center justify-center mr-3 checkbox-icon"
+                  >
+                    <i class="ri-check-line text-white text-xs opacity-0"></i>
+                  </div>
+                  <span class="text-gray-700">50% and above</span>
+                  <span class="text-gray-400 text-sm ml-auto">12</span>
+                </label>
+              </div>
+              <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="discount-30-50"
+                  class="hidden custom-checkbox"
+                />
+                <label
+                  for="discount-30-50"
+                  class="flex items-center cursor-pointer"
+                >
+                  <div
+                    class="w-5 h-5 border border-gray-300 rounded flex items-center justify-center mr-3 checkbox-icon"
+                  >
+                    <i class="ri-check-line text-white text-xs opacity-0"></i>
+                  </div>
+                  <span class="text-gray-700">30% - 49%</span>
+                  <span class="text-gray-400 text-sm ml-auto">28</span>
+                </label>
+              </div>
+              <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="discount-20-30"
+                  class="hidden custom-checkbox"
+                />
+                <label
+                  for="discount-20-30"
+                  class="flex items-center cursor-pointer"
+                >
+                  <div
+                    class="w-5 h-5 border border-gray-300 rounded flex items-center justify-center mr-3 checkbox-icon"
+                  >
+                    <i class="ri-check-line text-white text-xs opacity-0"></i>
+                  </div>
+                  <span class="text-gray-700">20% - 29%</span>
+                  <span class="text-gray-400 text-sm ml-auto">36</span>
+                </label>
+              </div>
+              <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="discount-10-20"
+                  class="hidden custom-checkbox"
+                />
+                <label
+                  for="discount-10-20"
+                  class="flex items-center cursor-pointer"
+                >
+                  <div
+                    class="w-5 h-5 border border-gray-300 rounded flex items-center justify-center mr-3 checkbox-icon"
+                  >
+                    <i class="ri-check-line text-white text-xs opacity-0"></i>
+                  </div>
+                  <span class="text-gray-700">10% - 19%</span>
+                  <span class="text-gray-400 text-sm ml-auto">42</span>
+                </label>
+              </div>
+              <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="discount-under-10"
+                  class="hidden custom-checkbox"
+                />
+                <label
+                  for="discount-under-10"
+                  class="flex items-center cursor-pointer"
+                >
+                  <div
+                    class="w-5 h-5 border border-gray-300 rounded flex items-center justify-center mr-3 checkbox-icon"
+                  >
+                    <i class="ri-check-line text-white text-xs opacity-0"></i>
+                  </div>
+                  <span class="text-gray-700">Under 10%</span>
+                  <span class="text-gray-400 text-sm ml-auto">18</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="mb-8 border-t border-gray-100 pt-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Categories</h3>
+            <div class="space-y-3">
+              <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="category-dresses"
+                  class="hidden custom-checkbox"
+                />
+                <label
+                  for="category-dresses"
+                  class="flex items-center cursor-pointer"
+                >
+                  <div
+                    class="w-5 h-5 border border-gray-300 rounded flex items-center justify-center mr-3 checkbox-icon"
+                  >
+                    <i class="ri-check-line text-white text-xs opacity-0"></i>
+                  </div>
+                  <span class="text-gray-700">Dresses</span>
+                  <span class="text-gray-400 text-sm ml-auto">22</span>
+                </label>
+              </div>
+              <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="category-tops"
+                  class="hidden custom-checkbox"
+                  checked
+                />
+                <label
+                  for="category-tops"
+                  class="flex items-center cursor-pointer"
+                >
+                  <div
+                    class="w-5 h-5 border border-gray-300 rounded flex items-center justify-center mr-3 checkbox-icon"
+                  >
+                    <i class="ri-check-line text-white text-xs opacity-0"></i>
+                  </div>
+                  <span class="text-gray-700">Tops</span>
+                  <span class="text-gray-400 text-sm ml-auto">38</span>
+                </label>
+              </div>
+              <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="category-bottoms"
+                  class="hidden custom-checkbox"
+                />
+                <label
+                  for="category-bottoms"
+                  class="flex items-center cursor-pointer"
+                >
+                  <div
+                    class="w-5 h-5 border border-gray-300 rounded flex items-center justify-center mr-3 checkbox-icon"
+                  >
+                    <i class="ri-check-line text-white text-xs opacity-0"></i>
+                  </div>
+                  <span class="text-gray-700">Bottoms</span>
+                  <span class="text-gray-400 text-sm ml-auto">26</span>
+                </label>
+              </div>
+              <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="category-outerwear"
+                  class="hidden custom-checkbox"
+                />
+                <label
+                  for="category-outerwear"
+                  class="flex items-center cursor-pointer"
+                >
+                  <div
+                    class="w-5 h-5 border border-gray-300 rounded flex items-center justify-center mr-3 checkbox-icon"
+                  >
+                    <i class="ri-check-line text-white text-xs opacity-0"></i>
+                  </div>
+                  <span class="text-gray-700">Outerwear</span>
+                  <span class="text-gray-400 text-sm ml-auto">19</span>
+                </label>
+              </div>
+              <div class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="category-accessories"
+                  class="hidden custom-checkbox"
+                />
+                <label
+                  for="category-accessories"
+                  class="flex items-center cursor-pointer"
+                >
+                  <div
+                    class="w-5 h-5 border border-gray-300 rounded flex items-center justify-center mr-3 checkbox-icon"
+                  >
+                    <i class="ri-check-line text-white text-xs opacity-0"></i>
+                  </div>
+                  <span class="text-gray-700">Accessories</span>
+                  <span class="text-gray-400 text-sm ml-auto">31</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="mb-8 border-t border-gray-100 pt-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Size</h3>
+            <div class="grid grid-cols-4 gap-2">
+              <button
+                class="border border-gray-200 rounded py-2 text-sm text-gray-700 hover:border-primary hover:text-primary"
+              >
+                XS
+              </button>
+              <button
+                class="border border-gray-200 rounded py-2 text-sm text-gray-700 hover:border-primary hover:text-primary"
+              >
+                S
+              </button>
+              <button
+                class="border border-primary bg-primary/5 rounded py-2 text-sm text-primary font-medium"
+              >
+                M
+              </button>
+              <button
+                class="border border-gray-200 rounded py-2 text-sm text-gray-700 hover:border-primary hover:text-primary"
+              >
+                L
+              </button>
+              <button
+                class="border border-gray-200 rounded py-2 text-sm text-gray-700 hover:border-primary hover:text-primary"
+              >
+                XL
+              </button>
+              <button
+                class="border border-gray-200 rounded py-2 text-sm text-gray-700 hover:border-primary hover:text-primary"
+              >
+                XXL
+              </button>
+            </div>
+          </div>
+          <div class="mb-8 border-t border-gray-100 pt-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Color</h3>
+            <div class="flex flex-wrap gap-3">
+              <div>
+                <input
+                  type="radio"
+                  name="color"
+                  id="color-red"
+                  class="hidden color-radio"
+                />
+                <label for="color-red" class="block cursor-pointer">
+                  <div
+                    class="color-circle w-8 h-8 rounded-full bg-red-500 border-2 border-white shadow-sm"
+                  ></div>
+                </label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="color"
+                  id="color-blue"
+                  class="hidden color-radio"
+                  checked
+                />
+                <label for="color-blue" class="block cursor-pointer">
+                  <div
+                    class="color-circle w-8 h-8 rounded-full bg-blue-500 border-2 border-white shadow-sm"
+                  ></div>
+                </label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="color"
+                  id="color-green"
+                  class="hidden color-radio"
+                />
+                <label for="color-green" class="block cursor-pointer">
+                  <div
+                    class="color-circle w-8 h-8 rounded-full bg-green-500 border-2 border-white shadow-sm"
+                  ></div>
+                </label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="color"
+                  id="color-yellow"
+                  class="hidden color-radio"
+                />
+                <label for="color-yellow" class="block cursor-pointer">
+                  <div
+                    class="color-circle w-8 h-8 rounded-full bg-yellow-400 border-2 border-white shadow-sm"
+                  ></div>
+                </label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="color"
+                  id="color-purple"
+                  class="hidden color-radio"
+                />
+                <label for="color-purple" class="block cursor-pointer">
+                  <div
+                    class="color-circle w-8 h-8 rounded-full bg-purple-500 border-2 border-white shadow-sm"
+                  ></div>
+                </label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="color"
+                  id="color-pink"
+                  class="hidden color-radio"
+                />
+                <label for="color-pink" class="block cursor-pointer">
+                  <div
+                    class="color-circle w-8 h-8 rounded-full bg-pink-400 border-2 border-white shadow-sm"
+                  ></div>
+                </label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="color"
+                  id="color-black"
+                  class="hidden color-radio"
+                />
+                <label for="color-black" class="block cursor-pointer">
+                  <div
+                    class="color-circle w-8 h-8 rounded-full bg-gray-900 border-2 border-white shadow-sm"
+                  ></div>
+                </label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  name="color"
+                  id="color-white"
+                  class="hidden color-radio"
+                />
+                <label for="color-white" class="block cursor-pointer">
+                  <div
+                    class="color-circle w-8 h-8 rounded-full bg-gray-100 border-2 border-white shadow-sm"
+                  ></div>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="mb-8 border-t border-gray-100 pt-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">
+              Price Range
+            </h3>
+            <div class="mb-4">
+              <input
+                type="range"
+                min="0"
+                max="500"
+                value="200"
+                class="price-slider w-full h-2 bg-gray-200 rounded-full appearance-none"
+              />
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-600">$0</span>
+              <span class="text-gray-600">$500</span>
+            </div>
+            <div class="flex items-center mt-4 space-x-3">
+              <div class="relative flex-1">
+                <span
+                  class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
+                  >$</span
+                >
+                <input
+                  type="number"
+                  value="0"
+                  class="w-full pl-8 pr-3 py-2 border border-gray-200 rounded text-sm"
+                />
+              </div>
+              <span class="text-gray-400">-</span>
+              <div class="relative flex-1">
+                <span
+                  class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
+                  >$</span
+                >
+                <input
+                  type="number"
+                  value="200"
+                  class="w-full pl-8 pr-3 py-2 border border-gray-200 rounded text-sm"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="flex space-x-3">
+            <button
+              class="bg-primary text-white px-5 py-2 !rounded-button whitespace-nowrap font-medium hover:bg-primary/90 transition flex-1"
+            >
+              Apply Filters
+            </button>
+            <button
+              class="bg-white text-gray-700 px-4 py-2 !rounded-button whitespace-nowrap border border-gray-200 hover:bg-gray-50 transition"
+            >
+              <i class="ri-refresh-line"></i>
+            </button>
+          </div>
+        </div>
+        <!-- Product Grid -->
+        <div class="lg:w-3/4">
+          <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
+            <div
+              class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6"
+            >
+              <h1 class="text-2xl font-bold text-gray-900 mb-3 sm:mb-0">
+                Sale
+              </h1>
+              <div class="flex items-center space-x-4">
+                <div class="relative">
+                  <button
+                    class="flex items-center text-gray-700 text-sm border border-gray-200 rounded px-3 py-2 bg-white"
+                  >
+                    <span>Sort by: Highest Discount</span>
+                    <i class="ri-arrow-down-s-line ml-2"></i>
+                  </button>
+                  <div
+                    class="hidden absolute right-0 top-full mt-1 w-56 bg-white shadow-lg rounded-lg z-10 py-1 border border-gray-100"
+                  >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-primary hover:bg-gray-50"
+                      >Highest Discount</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      >Price: Low to High</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      >Price: High to Low</a
+                    >
+                    <a
+                      href="#"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      >Newest</a
+                    >
+                  </div>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded"
+                  >
+                    <i class="ri-layout-grid-line"></i>
+                  </button>
+                  <button
+                    class="w-8 h-8 flex items-center justify-center bg-white text-gray-500 border border-gray-200 rounded hover:bg-gray-50"
+                  >
+                    <i class="ri-list-check"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap items-center text-sm text-gray-600 mb-4">
+              <span class="mr-2">Active Filters:</span>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="bg-gray-100 px-3 py-1 rounded-full flex items-center"
+                >
+                  Discount: 50%+
+                  <button class="ml-2 text-gray-500 hover:text-gray-700">
+                    <i class="ri-close-line"></i>
+                  </button>
+                </span>
+                <span
+                  class="bg-gray-100 px-3 py-1 rounded-full flex items-center"
+                >
+                  Category: Tops
+                  <button class="ml-2 text-gray-500 hover:text-gray-700">
+                    <i class="ri-close-line"></i>
+                  </button>
+                </span>
+                <span
+                  class="bg-gray-100 px-3 py-1 rounded-full flex items-center"
+                >
+                  Size: M
+                  <button class="ml-2 text-gray-500 hover:text-gray-700">
+                    <i class="ri-close-line"></i>
+                  </button>
+                </span>
+                <span
+                  class="bg-gray-100 px-3 py-1 rounded-full flex items-center"
+                >
+                  Color: Blue
+                  <button class="ml-2 text-gray-500 hover:text-gray-700">
+                    <i class="ri-close-line"></i>
+                  </button>
+                </span>
+              </div>
+              <button class="ml-auto text-primary hover:underline">
+                Clear All
+              </button>
+            </div>
+            <p class="text-gray-600 text-sm">
+              Showing 1-12 of 136 sale products
+            </p>
+          </div>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          >
+            <!-- Product 1 -->
+            <div
+              class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=A%2520stylish%2520designer%2520leather%2520jacket%2520in%2520black%2520with%2520silver%2520hardware%2520and%2520quilted%2520details%252C%2520perfect%2520for%2520fashion%2520photography.%2520The%2520jacket%2520has%2520a%2520modern%2520silhouette%2520with%2520a%2520slightly%2520fitted%2520design.%2520The%2520image%2520shows%2520the%2520full%2520garment%2520against%2520a%2520clean%252C%2520white%2520background%2520with%2520professional%2520lighting%2520that%2520highlights%2520the%2520leather%2520texture%2520and%2520details.%2520The%2520styling%2520is%2520minimal%2520and%2520modern%2520with%2520high-end%2520fashion%2520appeal.&width=300&height=256&seq=123490&orientation=portrait"
+                  alt="Premium Leather Jacket"
+                  class="w-full h-full object-cover object-top"
+                />
+                <button
+                  class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                >
+                  <i class="ri-heart-line text-gray-500"></i>
+                </button>
+                <div
+                  class="absolute top-3 left-3 discount-badge text-white text-xs font-bold px-3 py-1.5 rounded-full"
+                >
+                  -70%
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex items-center mb-1">
+                  <div class="flex text-yellow-400">
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-half-fill text-xs"></i>
+                  </div>
+                  <span class="text-xs text-gray-500 ml-1">(48)</span>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900">
+                  Premium Leather Jacket
+                </h3>
+                <p class="text-gray-500 text-sm mb-2">Limited Stock</p>
+                <div class="flex justify-between items-center">
+                  <div>
+                    <span class="text-gray-900 font-bold">$149.99</span>
+                    <span class="text-gray-500 line-through text-sm ml-2"
+                      >$499.99</span
+                    >
+                  </div>
+                  <button
+                    class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button"
+                  >
+                    <i class="ri-shopping-bag-line"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 2 -->
+            <div
+              class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=A%2520stylish%2520designer%2520cashmere%2520sweater%2520in%2520light%2520blue%2520with%2520a%2520relaxed%2520fit%252C%2520perfect%2520for%2520fashion%2520photography.%2520The%2520sweater%2520has%2520a%2520modern%2520silhouette%2520with%2520a%2520slightly%2520oversized%2520design.%2520The%2520image%2520shows%2520the%2520full%2520garment%2520against%2520a%2520clean%252C%2520white%2520background%2520with%2520professional%2520lighting%2520that%2520highlights%2520the%2520fabric%2520texture%2520and%2520details.%2520The%2520styling%2520is%2520minimal%2520and%2520modern%2520with%2520high-end%2520fashion%2520appeal.&width=300&height=256&seq=123491&orientation=portrait"
+                  alt="Cashmere Blend Sweater"
+                  class="w-full h-full object-cover object-top"
+                />
+                <button
+                  class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                >
+                  <i class="ri-heart-line text-gray-500"></i>
+                </button>
+                <div
+                  class="absolute top-3 left-3 discount-badge text-white text-xs font-bold px-3 py-1.5 rounded-full"
+                >
+                  -65%
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex items-center mb-1">
+                  <div class="flex text-yellow-400">
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-line text-xs"></i>
+                  </div>
+                  <span class="text-xs text-gray-500 ml-1">(36)</span>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900">
+                  Cashmere Blend Sweater
+                </h3>
+                <p class="text-gray-500 text-sm mb-2">Premium Collection</p>
+                <div class="flex justify-between items-center">
+                  <div>
+                    <span class="text-gray-900 font-bold">$69.99</span>
+                    <span class="text-gray-500 line-through text-sm ml-2"
+                      >$199.99</span
+                    >
+                  </div>
+                  <button
+                    class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button"
+                  >
+                    <i class="ri-shopping-bag-line"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 3 -->
+            <div
+              class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=A%2520stylish%2520designer%2520silk%2520blouse%2520in%2520royal%2520blue%2520with%2520a%2520bow%2520tie%2520detail%2520at%2520the%2520neck%252C%2520perfect%2520for%2520fashion%2520photography.%2520The%2520blouse%2520has%2520a%2520modern%2520silhouette%2520with%2520a%2520slightly%2520loose%2520fit.%2520The%2520image%2520shows%2520the%2520full%2520garment%2520against%2520a%2520clean%252C%2520white%2520background%2520with%2520professional%2520lighting%2520that%2520highlights%2520the%2520fabric%2520texture%2520and%2520details.%2520The%2520styling%2520is%2520minimal%2520and%2520modern%2520with%2520high-end%2520fashion%2520appeal.&width=300&height=256&seq=123492&orientation=portrait"
+                  alt="Silk Bow Blouse"
+                  class="w-full h-full object-cover object-top"
+                />
+                <button
+                  class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                >
+                  <i class="ri-heart-line text-gray-500"></i>
+                </button>
+                <div
+                  class="absolute top-3 left-3 discount-badge text-white text-xs font-bold px-3 py-1.5 rounded-full"
+                >
+                  -60%
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex items-center mb-1">
+                  <div class="flex text-yellow-400">
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                  </div>
+                  <span class="text-xs text-gray-500 ml-1">(58)</span>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900">
+                  Silk Bow Blouse
+                </h3>
+                <p class="text-gray-500 text-sm mb-2">Designer Collection</p>
+                <div class="flex justify-between items-center">
+                  <div>
+                    <span class="text-gray-900 font-bold">$59.99</span>
+                    <span class="text-gray-500 line-through text-sm ml-2"
+                      >$149.99</span
+                    >
+                  </div>
+                  <button
+                    class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button"
+                  >
+                    <i class="ri-shopping-bag-line"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 4 -->
+            <div
+              class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=A%2520stylish%2520designer%2520wool%2520coat%2520in%2520camel%2520with%2520double-breasted%2520buttons%2520and%2520a%2520belt%252C%2520perfect%2520for%2520fashion%2520photography.%2520The%2520coat%2520has%2520a%2520modern%2520silhouette%2520with%2520a%2520classic%2520tailored%2520fit.%2520The%2520image%2520shows%2520the%2520full%2520garment%2520against%2520a%2520clean%252C%2520white%2520background%2520with%2520professional%2520lighting%2520that%2520highlights%2520the%2520fabric%2520texture%2520and%2520details.%2520The%2520styling%2520is%2520minimal%2520and%2520modern%2520with%2520high-end%2520fashion%2520appeal.&width=300&height=256&seq=123493&orientation=portrait"
+                  alt="Wool Blend Coat"
+                  class="w-full h-full object-cover object-top"
+                />
+                <button
+                  class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                >
+                  <i class="ri-heart-line text-gray-500"></i>
+                </button>
+                <div
+                  class="absolute top-3 left-3 discount-badge text-white text-xs font-bold px-3 py-1.5 rounded-full"
+                >
+                  -55%
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex items-center mb-1">
+                  <div class="flex text-yellow-400">
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-half-fill text-xs"></i>
+                    <i class="ri-star-line text-xs"></i>
+                  </div>
+                  <span class="text-xs text-gray-500 ml-1">(32)</span>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900">
+                  Wool Blend Coat
+                </h3>
+                <p class="text-gray-500 text-sm mb-2">Winter Collection</p>
+                <div class="flex justify-between items-center">
+                  <div>
+                    <span class="text-gray-900 font-bold">$129.99</span>
+                    <span class="text-gray-500 line-through text-sm ml-2"
+                      >$289.99</span
+                    >
+                  </div>
+                  <button
+                    class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button"
+                  >
+                    <i class="ri-shopping-bag-line"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 5 -->
+            <div
+              class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=A%2520stylish%2520designer%2520pleated%2520midi%2520skirt%2520in%2520emerald%2520green%2520with%2520a%2520high%2520waist%252C%2520perfect%2520for%2520fashion%2520photography.%2520The%2520skirt%2520has%2520a%2520modern%2520silhouette%2520with%2520an%2520A-line%2520shape.%2520The%2520image%2520shows%2520the%2520full%2520garment%2520against%2520a%2520clean%252C%2520white%2520background%2520with%2520professional%2520lighting%2520that%2520highlights%2520the%2520fabric%2520texture%2520and%2520details.%2520The%2520styling%2520is%2520minimal%2520and%2520modern%2520with%2520high-end%2520fashion%2520appeal.&width=300&height=256&seq=123494&orientation=portrait"
+                  alt="Pleated Midi Skirt"
+                  class="w-full h-full object-cover object-top"
+                />
+                <button
+                  class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                >
+                  <i class="ri-heart-line text-gray-500"></i>
+                </button>
+                <div
+                  class="absolute top-3 left-3 discount-badge text-white text-xs font-bold px-3 py-1.5 rounded-full"
+                >
+                  -50%
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex items-center mb-1">
+                  <div class="flex text-yellow-400">
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-line text-xs"></i>
+                  </div>
+                  <span class="text-xs text-gray-500 ml-1">(41)</span>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900">
+                  Pleated Midi Skirt
+                </h3>
+                <p class="text-gray-500 text-sm mb-2">Spring Collection</p>
+                <div class="flex justify-between items-center">
+                  <div>
+                    <span class="text-gray-900 font-bold">$49.99</span>
+                    <span class="text-gray-500 line-through text-sm ml-2"
+                      >$99.99</span
+                    >
+                  </div>
+                  <button
+                    class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button"
+                  >
+                    <i class="ri-shopping-bag-line"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 6 -->
+            <div
+              class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=A%2520stylish%2520designer%2520linen%2520blazer%2520in%2520light%2520beige%2520with%2520structured%2520shoulders%252C%2520perfect%2520for%2520fashion%2520photography.%2520The%2520blazer%2520has%2520a%2520modern%2520silhouette%2520with%2520a%2520slightly%2520oversized%2520fit.%2520The%2520image%2520shows%2520the%2520full%2520garment%2520against%2520a%2520clean%252C%2520white%2520background%2520with%2520professional%2520lighting%2520that%2520highlights%2520the%2520fabric%2520texture%2520and%2520details.%2520The%2520styling%2520is%2520minimal%2520and%2520modern%2520with%2520high-end%2520fashion%2520appeal.&width=300&height=256&seq=123495&orientation=portrait"
+                  alt="Linen Blend Blazer"
+                  class="w-full h-full object-cover object-top"
+                />
+                <button
+                  class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                >
+                  <i class="ri-heart-line text-gray-500"></i>
+                </button>
+                <div
+                  class="absolute top-3 left-3 discount-badge text-white text-xs font-bold px-3 py-1.5 rounded-full"
+                >
+                  -45%
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex items-center mb-1">
+                  <div class="flex text-yellow-400">
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-half-fill text-xs"></i>
+                  </div>
+                  <span class="text-xs text-gray-500 ml-1">(47)</span>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900">
+                  Linen Blend Blazer
+                </h3>
+                <p class="text-gray-500 text-sm mb-2">Summer Collection</p>
+                <div class="flex justify-between items-center">
+                  <div>
+                    <span class="text-gray-900 font-bold">$82.99</span>
+                    <span class="text-gray-500 line-through text-sm ml-2"
+                      >$149.99</span
+                    >
+                  </div>
+                  <button
+                    class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button"
+                  >
+                    <i class="ri-shopping-bag-line"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 7 -->
+            <div
+              class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=A%2520stylish%2520designer%2520wrap%2520dress%2520in%2520floral%2520print%2520with%2520a%2520V-neckline%252C%2520perfect%2520for%2520fashion%2520photography.%2520The%2520dress%2520has%2520a%2520modern%2520silhouette%2520with%2520a%2520flattering%2520wrap%2520design.%2520The%2520image%2520shows%2520the%2520full%2520garment%2520against%2520a%2520clean%252C%2520white%2520background%2520with%2520professional%2520lighting%2520that%2520highlights%2520the%2520fabric%2520pattern%2520and%2520details.%2520The%2520styling%2520is%2520minimal%2520and%2520modern%2520with%2520high-end%2520fashion%2520appeal.&width=300&height=256&seq=123496&orientation=portrait"
+                  alt="Floral Wrap Dress"
+                  class="w-full h-full object-cover object-top"
+                />
+                <button
+                  class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                >
+                  <i class="ri-heart-line text-gray-500"></i>
+                </button>
+                <div
+                  class="absolute top-3 left-3 discount-badge text-white text-xs font-bold px-3 py-1.5 rounded-full"
+                >
+                  -40%
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex items-center mb-1">
+                  <div class="flex text-yellow-400">
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-line text-xs"></i>
+                  </div>
+                  <span class="text-xs text-gray-500 ml-1">(29)</span>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900">
+                  Floral Wrap Dress
+                </h3>
+                <p class="text-gray-500 text-sm mb-2">Spring Collection</p>
+                <div class="flex justify-between items-center">
+                  <div>
+                    <span class="text-gray-900 font-bold">$65.99</span>
+                    <span class="text-gray-500 line-through text-sm ml-2"
+                      >$109.99</span
+                    >
+                  </div>
+                  <button
+                    class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button"
+                  >
+                    <i class="ri-shopping-bag-line"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 8 -->
+            <div
+              class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=A%2520stylish%2520designer%2520wide-leg%2520trousers%2520in%2520navy%2520blue%2520with%2520a%2520high%2520waist%252C%2520perfect%2520for%2520fashion%2520photography.%2520The%2520trousers%2520have%2520a%2520modern%2520silhouette%2520with%2520a%2520flowing%2520wide-leg%2520design.%2520The%2520image%2520shows%2520the%2520full%2520garment%2520against%2520a%2520clean%252C%2520white%2520background%2520with%2520professional%2520lighting%2520that%2520highlights%2520the%2520fabric%2520texture%2520and%2520details.%2520The%2520styling%2520is%2520minimal%2520and%2520modern%2520with%2520high-end%2520fashion%2520appeal.&width=300&height=256&seq=123497&orientation=portrait"
+                  alt="Wide-Leg Trousers"
+                  class="w-full h-full object-cover object-top"
+                />
+                <button
+                  class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                >
+                  <i class="ri-heart-line text-gray-500"></i>
+                </button>
+                <div
+                  class="absolute top-3 left-3 discount-badge text-white text-xs font-bold px-3 py-1.5 rounded-full"
+                >
+                  -35%
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex items-center mb-1">
+                  <div class="flex text-yellow-400">
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-half-fill text-xs"></i>
+                    <i class="ri-star-line text-xs"></i>
+                  </div>
+                  <span class="text-xs text-gray-500 ml-1">(23)</span>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900">
+                  Wide-Leg Trousers
+                </h3>
+                <p class="text-gray-500 text-sm mb-2">Office Collection</p>
+                <div class="flex justify-between items-center">
+                  <div>
+                    <span class="text-gray-900 font-bold">$58.49</span>
+                    <span class="text-gray-500 line-through text-sm ml-2"
+                      >$89.99</span
+                    >
+                  </div>
+                  <button
+                    class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button"
+                  >
+                    <i class="ri-shopping-bag-line"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 9 -->
+            <div
+              class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=A%2520stylish%2520designer%2520knit%2520cardigan%2520in%2520light%2520blue%2520with%2520pearl%2520buttons%252C%2520perfect%2520for%2520fashion%2520photography.%2520The%2520cardigan%2520has%2520a%2520modern%2520silhouette%2520with%2520a%2520slightly%2520oversized%2520fit.%2520The%2520image%2520shows%2520the%2520full%2520garment%2520against%2520a%2520clean%252C%2520white%2520background%2520with%2520professional%2520lighting%2520that%2520highlights%2520the%2520fabric%2520texture%2520and%2520details.%2520The%2520styling%2520is%2520minimal%2520and%2520modern%2520with%2520high-end%2520fashion%2520appeal.&width=300&height=256&seq=123498&orientation=portrait"
+                  alt="Pearl Button Cardigan"
+                  class="w-full h-full object-cover object-top"
+                />
+                <button
+                  class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                >
+                  <i class="ri-heart-line text-gray-500"></i>
+                </button>
+                <div
+                  class="absolute top-3 left-3 discount-badge text-white text-xs font-bold px-3 py-1.5 rounded-full"
+                >
+                  -30%
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex items-center mb-1">
+                  <div class="flex text-yellow-400">
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-line text-xs"></i>
+                  </div>
+                  <span class="text-xs text-gray-500 ml-1">(33)</span>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900">
+                  Pearl Button Cardigan
+                </h3>
+                <p class="text-gray-500 text-sm mb-2">Spring Collection</p>
+                <div class="flex justify-between items-center">
+                  <div>
+                    <span class="text-gray-900 font-bold">$55.99</span>
+                    <span class="text-gray-500 line-through text-sm ml-2"
+                      >$79.99</span
+                    >
+                  </div>
+                  <button
+                    class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button"
+                  >
+                    <i class="ri-shopping-bag-line"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 10 -->
+            <div
+              class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=A%2520stylish%2520designer%2520satin%2520slip%2520dress%2520in%2520champagne%2520color%2520with%2520thin%2520straps%252C%2520perfect%2520for%2520fashion%2520photography.%2520The%2520dress%2520has%2520a%2520modern%2520silhouette%2520with%2520a%2520bias%2520cut.%2520The%2520image%2520shows%2520the%2520full%2520garment%2520against%2520a%2520clean%252C%2520white%2520background%2520with%2520professional%2520lighting%2520that%2520highlights%2520the%2520fabric%2520texture%2520and%2520details.%2520The%2520styling%2520is%2520minimal%2520and%2520modern%2520with%2520high-end%2520fashion%2520appeal.&width=300&height=256&seq=123499&orientation=portrait"
+                  alt="Satin Slip Dress"
+                  class="w-full h-full object-cover object-top"
+                />
+                <button
+                  class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                >
+                  <i class="ri-heart-line text-gray-500"></i>
+                </button>
+                <div
+                  class="absolute top-3 left-3 discount-badge text-white text-xs font-bold px-3 py-1.5 rounded-full"
+                >
+                  -25%
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex items-center mb-1">
+                  <div class="flex text-yellow-400">
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                  </div>
+                  <span class="text-xs text-gray-500 ml-1">(52)</span>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900">
+                  Satin Slip Dress
+                </h3>
+                <p class="text-gray-500 text-sm mb-2">Evening Collection</p>
+                <div class="flex justify-between items-center">
+                  <div>
+                    <span class="text-gray-900 font-bold">$74.99</span>
+                    <span class="text-gray-500 line-through text-sm ml-2"
+                      >$99.99</span
+                    >
+                  </div>
+                  <button
+                    class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button"
+                  >
+                    <i class="ri-shopping-bag-line"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 11 -->
+            <div
+              class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=A%2520stylish%2520designer%2520denim%2520jacket%2520in%2520light%2520wash%2520with%2520distressed%2520details%252C%2520perfect%2520for%2520fashion%2520photography.%2520The%2520jacket%2520has%2520a%2520modern%2520silhouette%2520with%2520a%2520slightly%2520oversized%2520fit.%2520The%2520image%2520shows%2520the%2520full%2520garment%2520against%2520a%2520clean%252C%2520white%2520background%2520with%2520professional%2520lighting%2520that%2520highlights%2520the%2520fabric%2520texture%2520and%2520details.%2520The%2520styling%2520is%2520minimal%2520and%2520modern%2520with%2520high-end%2520fashion%2520appeal.&width=300&height=256&seq=123500&orientation=portrait"
+                  alt="Distressed Denim Jacket"
+                  class="w-full h-full object-cover object-top"
+                />
+                <button
+                  class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                >
+                  <i class="ri-heart-line text-gray-500"></i>
+                </button>
+                <div
+                  class="absolute top-3 left-3 discount-badge text-white text-xs font-bold px-3 py-1.5 rounded-full"
+                >
+                  -20%
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex items-center mb-1">
+                  <div class="flex text-yellow-400">
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-line text-xs"></i>
+                    <i class="ri-star-line text-xs"></i>
+                  </div>
+                  <span class="text-xs text-gray-500 ml-1">(21)</span>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900">
+                  Distressed Denim Jacket
+                </h3>
+                <p class="text-gray-500 text-sm mb-2">Casual Collection</p>
+                <div class="flex justify-between items-center">
+                  <div>
+                    <span class="text-gray-900 font-bold">$63.99</span>
+                    <span class="text-gray-500 line-through text-sm ml-2"
+                      >$79.99</span
+                    >
+                  </div>
+                  <button
+                    class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button"
+                  >
+                    <i class="ri-shopping-bag-line"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Product 12 -->
+            <div
+              class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            >
+              <div class="relative h-64 overflow-hidden">
+                <img
+                  src="https://readdy.ai/api/search-image?query=A%2520stylish%2520designer%2520printed%2520silk%2520scarf%2520in%2520vibrant%2520blue%2520and%2520gold%2520patterns%252C%2520perfect%2520for%2520fashion%2520photography.%2520The%2520scarf%2520has%2520a%2520large%2520square%2520format%2520with%2520elegant%2520finished%2520edges.%2520The%2520image%2520shows%2520the%2520full%2520item%2520against%2520a%2520clean%252C%2520white%2520background%2520with%2520professional%2520lighting%2520that%2520highlights%2520the%2520fabric%2520pattern%2520and%2520details.%2520The%2520styling%2520is%2520minimal%2520and%2520modern%2520with%2520high-end%2520fashion%2520appeal.&width=300&height=256&seq=123501&orientation=portrait"
+                  alt="Printed Silk Scarf"
+                  class="w-full h-full object-cover object-top"
+                />
+                <button
+                  class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center bg-white rounded-full shadow-sm"
+                >
+                  <i class="ri-heart-line text-gray-500"></i>
+                </button>
+                <div
+                  class="absolute top-3 left-3 discount-badge text-white text-xs font-bold px-3 py-1.5 rounded-full"
+                >
+                  -15%
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex items-center mb-1">
+                  <div class="flex text-yellow-400">
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-fill text-xs"></i>
+                    <i class="ri-star-half-fill text-xs"></i>
+                  </div>
+                  <span class="text-xs text-gray-500 ml-1">(39)</span>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900">
+                  Printed Silk Scarf
+                </h3>
+                <p class="text-gray-500 text-sm mb-2">Accessories Collection</p>
+                <div class="flex justify-between items-center">
+                  <div>
+                    <span class="text-gray-900 font-bold">$42.49</span>
+                    <span class="text-gray-500 line-through text-sm ml-2"
+                      >$49.99</span
+                    >
+                  </div>
+                  <button
+                    class="w-10 h-10 flex items-center justify-center bg-primary text-white rounded-full !rounded-button"
+                  >
+                    <i class="ri-shopping-bag-line"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Pagination -->
+          <div
+            class="mt-8 flex justify-between items-center bg-white rounded-lg shadow-sm p-4"
+          >
+            <div class="text-gray-600 text-sm">
+              Showing 1-12 of 136 products
+            </div>
+            <div class="flex items-center space-x-1">
+              <button
+                class="w-9 h-9 flex items-center justify-center rounded border border-gray-200 text-gray-500 hover:border-primary hover:text-primary"
+              >
+                <i class="ri-arrow-left-s-line"></i>
+              </button>
+              <button
+                class="w-9 h-9 flex items-center justify-center rounded bg-primary text-white"
+              >
+                1
+              </button>
+              <button
+                class="w-9 h-9 flex items-center justify-center rounded border border-gray-200 text-gray-700 hover:border-primary hover:text-primary"
+              >
+                2
+              </button>
+              <button
+                class="w-9 h-9 flex items-center justify-center rounded border border-gray-200 text-gray-700 hover:border-primary hover:text-primary"
+              >
+                3
+              </button>
+              <button
+                class="w-9 h-9 flex items-center justify-center rounded border border-gray-200 text-gray-700 hover:border-primary hover:text-primary"
+              >
+                4
+              </button>
+              <button
+                class="w-9 h-9 flex items-center justify-center rounded border border-gray-200 text-gray-500 hover:border-primary hover:text-primary"
+              >
+                <i class="ri-arrow-right-s-line"></i>
+              </button>
+            </div>
+            <div class="relative">
+              <button
+                class="flex items-center text-gray-700 text-sm border border-gray-200 rounded px-3 py-2 bg-white"
+              >
+                <span>12 per page</span>
+                <i class="ri-arrow-down-s-line ml-2"></i>
+              </button>
+              <div
+                class="hidden absolute right-0 top-full mt-1 w-36 bg-white shadow-lg rounded-lg z-10 py-1 border border-gray-100"
+              >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                  >12 per page</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                  >24 per page</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                  >36 per page</a
+                >
+                <a
+                  href="#"
+                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                  >48 per page</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Newsletter -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Join Our Newsletter
+          </h2>
+          <p class="text-gray-600 mb-8">
+            Subscribe to receive updates, access to exclusive deals, and more.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+            <input
+              type="email"
+              placeholder="Enter your email address"
+              class="flex-1 px-4 py-3 border border-gray-200 rounded-lg focus:border-primary focus:ring-1 focus:ring-primary"
+            />
+            <button
+              class="bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-primary/90 transition"
+            >
+              Subscribe
+            </button>
+          </div>
+          <p class="text-gray-500 text-sm mt-4">
+            By subscribing, you agree to our Privacy Policy and consent to
+            receive updates from our company.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+          <div>
+            <a
+              href="#"
+              class="text-3xl font-['Pacifico'] text-white mb-4 inline-block"
+              >logo</a
+            >
+            <p class="text-gray-400 mb-4">
+              Your destination for premium fashion and lifestyle products.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-facebook-fill"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-instagram-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-twitter-x-line"></i>
+              </a>
+              <a
+                href="#"
+                class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-primary transition"
+              >
+                <i class="ri-pinterest-line"></i>
+              </a>
+            </div>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Shop</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Women</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Men</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Accessories</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Beauty</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Sale</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Customer Service</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Contact Us</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Shipping & Returns</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >FAQ</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Size Guide</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Track Order</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-4">About</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Our Story</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Sustainability</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Careers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Press</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-gray-400 hover:text-white transition"
+                  >Privacy Policy</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-400 text-sm mb-4 md:mb-0">
+            © 2025 Fashion Store. All rights reserved.
+          </p>
+          <div class="flex items-center space-x-4">
+            <div class="w-8 h-5 flex items-center justify-center">
+              <i class="ri-visa-fill text-xl"></i>
+            </div>
+            <div class="w-8 h-5 flex items-center justify-center">
+              <i class="ri-mastercard-fill text-xl"></i>
+            </div>
+            <div class="w-8 h-5 flex items-center justify-center">
+              <i class="ri-paypal-fill text-xl"></i>
+            </div>
+            <div class="w-8 h-5 flex items-center justify-center">
+              <i class="ri-apple-fill text-xl"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Checkbox functionality
+        const checkboxes = document.querySelectorAll(".custom-checkbox");
+        checkboxes.forEach((checkbox) => {
+          checkbox.addEventListener("change", function () {
+            const icon = this.nextElementSibling.querySelector(".checkbox-icon i");
+            if (this.checked) {
+              icon.style.opacity = "1";
+            } else {
+              icon.style.opacity = "0";
+            }
+          });
+        });
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        // Price slider functionality
+        const priceSlider = document.querySelector(".price-slider");
+        const minPriceInput = document.querySelectorAll('input[type="number"]')[0];
+        const maxPriceInput = document.querySelectorAll('input[type="number"]')[1];
+        if (priceSlider && minPriceInput && maxPriceInput) {
+          priceSlider.addEventListener("input", function () {
+            maxPriceInput.value = this.value;
+          });
+          minPriceInput.addEventListener("input", function () {
+            if (parseInt(this.value) > parseInt(maxPriceInput.value)) {
+              this.value = maxPriceInput.value;
+            }
+          });
+          maxPriceInput.addEventListener("input", function () {
+            priceSlider.value = this.value;
+            if (parseInt(this.value) < parseInt(minPriceInput.value)) {
+              minPriceInput.value = this.value;
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home & Living - Fashion Store</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <style>
+      :where([class^="ri-"])::before { content: "\f3c2"; }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#4B83F2",
+              secondary: "#1f2937",
+            },
+            borderRadius: {
+              none: "0px",
+              sm: "4px",
+              DEFAULT: "8px",
+              md: "12px",
+              lg: "16px",
+              xl: "20px",
+              "2xl": "24px",
+              "3xl": "32px",
+              full: "9999px",
+              button: "8px",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-white min-h-screen">
+    <header class="w-full border-b">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="h-20 flex items-center justify-between gap-8">
+          <a
+            href="https://readdy.ai/home/38b147e2-a03d-4f67-b278-2abfa024cf4b/b64d0d04-9704-4a5e-af26-a634315e8df5"
+            data-readdy="true"
+            class="font-['Pacifico'] text-primary text-2xl"
+            >logo</a
+          >
+          <div class="flex-1 max-w-xl relative">
+            <input
+              type="text"
+              placeholder="Search for home & living..."
+              class="w-full h-11 pl-11 pr-4 text-sm bg-gray-50 border-none rounded-lg"
+            />
+            <div
+              class="absolute left-3 top-0 w-5 h-11 flex items-center justify-center text-gray-400"
+            >
+              <i class="ri-search-line"></i>
+            </div>
+          </div>
+          <div class="flex items-center gap-6">
+            <a href="#" class="relative">
+              <div class="w-6 h-6 flex items-center justify-center">
+                <i class="ri-heart-line"></i>
+              </div>
+              <span
+                class="absolute -top-1 -right-1 w-4 h-4 flex items-center justify-center bg-primary text-[10px] text-white rounded-full"
+                >2</span
+              >
+            </a>
+            <a href="#" class="relative">
+              <div class="w-6 h-6 flex items-center justify-center">
+                <i class="ri-shopping-cart-line"></i>
+              </div>
+              <span
+                class="absolute -top-1 -right-1 w-4 h-4 flex items-center justify-center bg-primary text-[10px] text-white rounded-full"
+                >3</span
+              >
+            </a>
+            <a href="#">
+              <div class="w-6 h-6 flex items-center justify-center">
+                <i class="ri-user-line"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+        <nav class="h-12 -mb-px">
+          <ul class="h-full flex items-center gap-8 text-sm">
+            <li>
+              <a
+                href="https://readdy.ai/home/38b147e2-a03d-4f67-b278-2abfa024cf4b/b64d0d04-9704-4a5e-af26-a634315e8df5"
+                data-readdy="true"
+                class="hover:text-primary"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://readdy.ai/home/38b147e2-a03d-4f67-b278-2abfa024cf4b/d76d9ff1-b980-45ad-9b01-e63765f4fb1d"
+                data-readdy="true"
+                class="hover:text-primary"
+                >New Arrivals</a
+              >
+            </li>
+            <li><a href="#" class="hover:text-primary">Women</a></li>
+            <li><a href="#" class="hover:text-primary">Men</a></li>
+            <li><a href="#" class="hover:text-primary">Accessories</a></li>
+            <li><a href="#" class="hover:text-primary">Beauty</a></li>
+            <li>
+              <a
+                href="https://readdy.ai/home/38b147e2-a03d-4f67-b278-2abfa024cf4b/eeff7f22-5e24-46d1-8eb2-d30882df2c6f"
+                data-readdy="true"
+                class="hover:text-primary"
+                >Electronics</a
+              >
+            </li>
+            <li><a href="#" class="text-primary">Home & Living</a></li>
+            <li><a href="#" class="text-red-500">Sale</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 py-8">
+      <div class="flex items-center justify-between mb-8">
+        <nav class="flex items-center gap-2 text-sm text-gray-500">
+          <a
+            href="https://readdy.ai/home/38b147e2-a03d-4f67-b278-2abfa024cf4b/b64d0d04-9704-4a5e-af26-a634315e8df5"
+            data-readdy="true"
+            class="hover:text-primary"
+            >Home</a
+          >
+          <i class="ri-arrow-right-s-line"></i>
+          <span class="text-gray-900">Home & Living</span>
+        </nav>
+        <span class="text-sm text-gray-500">248 items</span>
+      </div>
+
+      <div class="flex gap-8 mb-8">
+        <div class="flex items-center gap-4">
+          <button
+            class="relative h-11 pl-4 pr-10 text-sm text-left bg-white border hover:border-primary !rounded-button whitespace-nowrap group"
+          >
+            <span>Sort by: Newest First</span>
+            <div
+              class="absolute right-3 top-0 w-4 h-11 flex items-center justify-center text-gray-400 group-hover:text-primary"
+            >
+              <i class="ri-arrow-down-s-line"></i>
+            </div>
+          </button>
+          <button
+            class="relative h-11 pl-4 pr-10 text-sm text-left bg-white border hover:border-primary !rounded-button whitespace-nowrap group"
+          >
+            <span>Room: All Rooms</span>
+            <div
+              class="absolute right-3 top-0 w-4 h-11 flex items-center justify-center text-gray-400 group-hover:text-primary"
+            >
+              <i class="ri-arrow-down-s-line"></i>
+            </div>
+          </button>
+          <button
+            class="relative h-11 pl-4 pr-10 text-sm text-left bg-white border hover:border-primary !rounded-button whitespace-nowrap group"
+          >
+            <span>Price Range: All</span>
+            <div
+              class="absolute right-3 top-0 w-4 h-11 flex items-center justify-center text-gray-400 group-hover:text-primary"
+            >
+              <i class="ri-arrow-down-s-line"></i>
+            </div>
+          </button>
+          <button
+            class="relative h-11 pl-4 pr-10 text-sm text-left bg-white border hover:border-primary !rounded-button whitespace-nowrap group"
+          >
+            <span>Style: All Styles</span>
+            <div
+              class="absolute right-3 top-0 w-4 h-11 flex items-center justify-center text-gray-400 group-hover:text-primary"
+            >
+              <i class="ri-arrow-down-s-line"></i>
+            </div>
+          </button>
+        </div>
+        <button
+          class="h-11 px-4 text-sm text-primary hover:text-primary/80 !rounded-button whitespace-nowrap"
+        >
+          Clear all filters
+        </button>
+      </div>
+
+      <div class="grid grid-cols-4 gap-6 mb-12">
+        <div class="group">
+          <div class="relative aspect-[3/4] mb-4 overflow-hidden rounded-lg">
+            <img
+              src="https://readdy.ai/api/search-image?query=luxurious%2520modern%2520scandinavian%2520style%2520living%2520room%2520sofa%2520in%2520light%2520beige%2520color%2520with%2520minimalist%2520design%2520against%2520clean%2520white%2520background%252C%2520showcasing%2520premium%2520furniture%2520craftsmanship&width=600&height=800&seq=1&orientation=portrait"
+              class="w-full h-full object-cover"
+              alt="Modern Sofa"
+            />
+            <div class="absolute top-3 left-3">
+              <span class="px-2 py-1 text-xs text-white bg-primary rounded-full"
+                >New</span
+              >
+            </div>
+            <div
+              class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <button
+                class="h-11 px-6 text-sm text-white bg-white/20 hover:bg-white/30 backdrop-blur-sm !rounded-button whitespace-nowrap"
+              >
+                Quick View
+              </button>
+            </div>
+            <button
+              class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-primary bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <i class="ri-heart-line"></i>
+            </button>
+          </div>
+          <h3 class="text-sm font-medium mb-2">Modern Comfort Sofa</h3>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-sm text-gray-900">$1,299.00</span>
+              <div class="flex items-center">
+                <i class="ri-star-fill text-yellow-400 text-sm"></i>
+                <i class="ri-star-fill text-yellow-400 text-sm"></i>
+                <i class="ri-star-fill text-yellow-400 text-sm"></i>
+                <i class="ri-star-fill text-yellow-400 text-sm"></i>
+                <i class="ri-star-half-fill text-yellow-400 text-sm"></i>
+              </div>
+            </div>
+            <span class="text-xs text-gray-500">Living Room</span>
+          </div>
+        </div>
+
+        <div class="group">
+          <div class="relative aspect-[3/4] mb-4 overflow-hidden rounded-lg">
+            <img
+              src="https://readdy.ai/api/search-image?query=elegant%2520minimalist%2520bedroom%2520set%2520with%2520premium%2520bedding%2520in%2520soft%2520neutral%2520tones%2520against%2520clean%2520light%2520background%252C%2520showcasing%2520luxury%2520bedding%2520materials&width=600&height=800&seq=2&orientation=portrait"
+              class="w-full h-full object-cover"
+              alt="Luxury Bedding"
+            />
+            <div class="absolute top-3 left-3">
+              <span class="px-2 py-1 text-xs text-white bg-primary rounded-full"
+                >New</span
+              >
+            </div>
+            <div
+              class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <button
+                class="h-11 px-6 text-sm text-white bg-white/20 hover:bg-white/30 backdrop-blur-sm !rounded-button whitespace-nowrap"
+              >
+                Quick View
+              </button>
+            </div>
+            <button
+              class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-primary bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <i class="ri-heart-line"></i>
+            </button>
+          </div>
+          <h3 class="text-sm font-medium mb-2">Premium Bedding Set</h3>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-sm text-gray-900">$249.00</span>
+              <div class="flex items-center">
+                <i class="ri-star-fill text-yellow-400 text-sm"></i>
+                <i class="ri-star-fill text-yellow-400 text-sm"></i>
+                <i class="ri-star-fill text-yellow-400 text-sm"></i>
+                <i class="ri-star-fill text-yellow-400 text-sm"></i>
+                <i class="ri-star-fill text-yellow-400 text-sm"></i>
+              </div>
+            </div>
+            <span class="text-xs text-gray-500">Bedroom</span>
+          </div>
+        </div>
+        <div class="group">
+          <div class="relative aspect-[3/4] mb-4 overflow-hidden rounded-lg">
+            <img
+              src="https://readdy.ai/api/search-image?query=modern%2520kitchen%2520appliance%2520set%2520with%2520sleek%2520design%2520on%2520clean%2520white%2520counter%2520against%2520light%2520background%252C%2520showcasing%2520premium%2520kitchen%2520accessories&width=600&height=800&seq=3&orientation=portrait"
+              class="w-full h-full object-cover"
+              alt="Kitchen Set"
+            />
+            <div class="absolute top-3 left-3">
+              <span class="px-2 py-1 text-xs text-white bg-primary rounded-full"
+                >New</span
+              >
+            </div>
+            <div
+              class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <button
+                class="h-11 px-6 text-sm text-white bg-white/20 hover:bg-white/30 backdrop-blur-sm !rounded-button whitespace-nowrap"
+              >
+                Quick View
+              </button>
+            </div>
+            <button
+              class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-primary bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <i class="ri-heart-line"></i>
+            </button>
+          </div>
+          <h3 class="text-sm font-medium mb-2">Premium Kitchen Set</h3>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-sm text-gray-900">$399.00</span>
+              <div class="flex items-center">
+                <i class="ri-star-fill text-yellow-400 text-sm"></i>
+                <i class="ri-star-fill text-yellow-400 text-sm"></i>
+                <i class="ri-star-fill text-yellow-400 text-sm"></i>
+                <i class="ri-star-fill text-yellow-400 text-sm"></i>
+                <i class="ri-star-line text-yellow-400 text-sm"></i>
+              </div>
+            </div>
+            <span class="text-xs text-gray-500">Kitchen</span>
+          </div>
+        </div>
+        <div class="group">
+          <div class="relative aspect-[3/4] mb-4 overflow-hidden rounded-lg">
+            <img
+              src="https://readdy.ai/api/search-image?query=elegant%2520wall%2520decor%2520set%2520with%2520modern%2520artwork%2520and%2520mirrors%2520displayed%2520against%2520clean%2520light%2520background%252C%2520showcasing%2520premium%2520home%2520decoration&width=600&height=800&seq=4&orientation=portrait"
+              class="w-full h-full object-cover"
+              alt="Wall Decor"
+            />
+            <div class="absolute top-3 left-3">
+              <span class="px-2 py-1 text-xs text-white bg-primary rounded-full"
+                >New</span
+              >
+            </div>
+            <div
+              class="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <button
+                class="h-11 px-6 text-sm text-white bg-white/20 hover:bg-white/30 backdrop-blur-sm !rounded-button whitespace-nowrap"
+              >
+                Quick View
+              </button>
+            </div>
+            <button
+              class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-primary bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+            >
+              <i class="ri-heart-line"></i>
+            </button>
+          </div>
+          <h3 class="text-sm font-medium mb-2">Elegant Wall Decor Set</h3>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="text-sm text-gray-900">$199.00</span>
+              <div class="flex items-center">
+                <i class="ri-star-fill text-yellow-400 text-sm"></i>
+                <i class="ri-star-fill text-yellow-400 text-sm"></i>
+                <i class="ri-star-fill text-yellow-400 text-sm"></i>
+                <i class="ri-star-fill text-yellow-400 text-sm"></i>
+                <i class="ri-star-half-fill text-yellow-400 text-sm"></i>
+              </div>
+            </div>
+            <span class="text-xs text-gray-500">Decor</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-center gap-2">
+        <button
+          class="h-11 px-6 text-sm text-white bg-primary hover:bg-primary/90 !rounded-button whitespace-nowrap"
+        >
+          Load More
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden"
+      id="quickViewModal"
+    >
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+          <div class="w-[1000px] bg-white rounded-lg">
+            <div class="flex">
+              <div class="w-[500px] p-8">
+                <img
+                  src="https://readdy.ai/api/search-image?query=luxurious%2520modern%2520scandinavian%2520style%2520living%2520room%2520sofa%2520in%2520light%2520beige%2520color%2520with%2520minimalist%2520design%2520against%2520clean%2520white%2520background%252C%2520showcasing%2520premium%2520furniture%2520craftsmanship&width=600&height=800&seq=1&orientation=portrait"
+                  class="w-full rounded-lg"
+                  alt="Modern Sofa"
+                />
+              </div>
+              <div class="flex-1 p-8">
+                <div class="flex items-start justify-between mb-6">
+                  <div>
+                    <h2 class="text-xl font-medium mb-2">
+                      Modern Comfort Sofa
+                    </h2>
+                    <span class="text-2xl">$1,299.00</span>
+                  </div>
+                  <button
+                    class="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-500"
+                  >
+                    <i class="ri-close-line"></i>
+                  </button>
+                </div>
+                <p class="text-sm text-gray-500 mb-6">
+                  Premium 3-seater sofa with ergonomic design and high-quality
+                  upholstery. Features durable construction and modern
+                  aesthetics perfect for contemporary living spaces.
+                </p>
+                <div class="mb-6">
+                  <h3 class="text-sm font-medium mb-3">Select Color</h3>
+                  <div class="flex gap-2">
+                    <button
+                      class="w-8 h-8 bg-[#E5DDD0] rounded-full ring-2 ring-offset-2 ring-primary"
+                    ></button>
+                    <button class="w-8 h-8 bg-[#8C8279] rounded-full"></button>
+                    <button class="w-8 h-8 bg-[#2D3142] rounded-full"></button>
+                  </div>
+                </div>
+                <div class="mb-6">
+                  <h3 class="text-sm font-medium mb-3">Key Features</h3>
+                  <ul class="text-sm text-gray-500 space-y-2">
+                    <li class="flex items-center gap-2">
+                      <i class="ri-checkbox-circle-line text-primary"></i>
+                      <span>Premium Fabric Upholstery</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i class="ri-checkbox-circle-line text-primary"></i>
+                      <span>Ergonomic Design</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <i class="ri-checkbox-circle-line text-primary"></i>
+                      <span>5-Year Warranty</span>
+                    </li>
+                  </ul>
+                </div>
+                <button
+                  class="w-full h-12 text-sm text-white bg-primary hover:bg-primary/90 !rounded-button whitespace-nowrap mb-4"
+                >
+                  Add to Cart
+                </button>
+                <a
+                  href="#"
+                  class="block text-sm text-center text-primary hover:text-primary/80"
+                  >View Full Details</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const quickViewBtns = document.querySelectorAll(
+          'button:contains("Quick View")',
+        );
+        const modal = document.getElementById("quickViewModal");
+        const closeBtn = modal.querySelector("button:has(.ri-close-line)");
+
+        quickViewBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            modal.classList.remove("hidden");
+          });
+        });
+
+        closeBtn.addEventListener("click", () => {
+          modal.classList.add("hidden");
+        });
+
+        modal.addEventListener("click", (e) => {
+          if (e.target === modal) {
+            modal.classList.add("hidden");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

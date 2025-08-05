@@ -12,7 +12,7 @@ exports.register = async (req, res) => {
 
   const hash = await bcrypt.hash(password, 10);
 
-  db.query('SELECT * FROM users WHERE username = ?', [username], (err, result) => {
+  db.query('SELECT * FROM users WHERE name = ?', [username], (err, result) => {
     if (err) {
       console.error("Database error during registration:", err);
       return res.status(500).json({ message: "Internal server error" });
@@ -23,7 +23,7 @@ exports.register = async (req, res) => {
     }
   
     db.query(
-      'INSERT INTO users (username, email, password) VALUES (?, ?, ?)',
+      'INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)',
       [username, email, hash],
       (err2) => {
         if (err2) {
@@ -43,7 +43,7 @@ exports.login = (req, res) => {
 
   const { username, password } = req.body;
 
-  db.query('SELECT * FROM users WHERE username = ?', [username], async (err, result) => {
+  db.query('SELECT * FROM users WHERE name = ?', [username], async (err, result) => {
     if (err) {
       console.error("Login error:", err);
       return res.status(500).json({ message: "Database error" });

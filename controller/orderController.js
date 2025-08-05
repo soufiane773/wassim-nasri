@@ -1,4 +1,5 @@
 const db = require('../db');
+const promiseDb = db.promise();
 
 exports.saveOrder = async (req, res) => {
   console.log('Starting saveOrder function');
@@ -19,7 +20,7 @@ exports.saveOrder = async (req, res) => {
   let connection;
   try {
     console.log('Getting database connection');
-    connection = await db.getConnection();
+    connection = await promiseDb.getConnection();
     console.log('Starting transaction');
     await connection.beginTransaction();
 
